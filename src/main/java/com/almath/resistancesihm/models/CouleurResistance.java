@@ -1,4 +1,4 @@
-package com.almath.resistancesihm.utils.Constantes;
+package com.almath.resistancesihm.models;
 
 public enum CouleurResistance {
     NOIR("BK"),
