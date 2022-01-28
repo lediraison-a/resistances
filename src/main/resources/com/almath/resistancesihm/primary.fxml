@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,30 +9,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="545.0" prefWidth="643.0"
-           xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.almath.resistancesihm.PrimaryController">
-    <Label id="PaneLabel" text="Calculateur de Résistance"/>
+<SplitPane orientation="VERTICAL" prefHeight="545.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.PrimaryController">
     <Pane id="MainPane" prefHeight="200.0" prefWidth="236.0">
-        <Button id="CalculerBtn" layoutX="240.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0"
-                prefWidth="163.0" text="Calculer"/>
-        <ImageView id="ImgResistance" fitHeight="172.0" fitWidth="361.0" layoutX="149.0" layoutY="41.0"
-                   pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../assets/resistance.png"/>
+        <Button id="CalculerBtn" layoutX="240.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Calculer" />
+        <ImageView id="ImgResistance" fitHeight="172.0" fitWidth="361.0" layoutX="149.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../assets/resistance.png" />
         </ImageView>
-        <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="21.0" layoutY="247.0"
-              nodeOrientation="LEFT_TO_RIGHT">
-            <ComboBox id="FirstColorPicker" promptText="Noir = 0"/>
-            <ComboBox id="SecondColorPicker" promptText="Noir = 0"/>
-            <ComboBox id="ThirdColorPicker" promptText="Noir = 0"/>
-            <ComboBox id="MultiplierPicker" promptText="Noir = 1"/>
-            <ComboBox id="TolerancePicker" promptText="Argent = +-10%"/>
-            <ComboBox promptText="Noir = 200ppm"/>
+        <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="21.0" layoutY="247.0" nodeOrientation="LEFT_TO_RIGHT">
+            <ComboBox id="FirstColorPicker" promptText="Noir = 0" />
+            <ComboBox id="SecondColorPicker" promptText="Noir = 0" />
+            <ComboBox id="ThirdColorPicker" promptText="Noir = 0" />
+            <ComboBox id="MultiplierPicker" promptText="Noir = 1" />
+            <ComboBox id="TolerancePicker" promptText="Argent = +-10%" />
+            <ComboBox promptText="Noir = 200ppm" />
         </HBox>
-        <HBox id="ResultContainer" alignment="CENTER" layoutX="177.0" layoutY="393.0" prefHeight="25.0"
-              prefWidth="289.0">
-            <TextField id="ResultTextField" text="0.00"/>
-            <ComboBox id="ResultComboPicker" prefHeight="25.0" prefWidth="110.0" promptText="Ohm Ω"/>
+        <HBox id="ResultContainer" alignment="CENTER" layoutX="177.0" layoutY="393.0" prefHeight="25.0" prefWidth="289.0">
+            <TextField id="ResultTextField" text="0.00" />
+            <ComboBox id="ResultComboPicker" prefHeight="25.0" prefWidth="110.0" promptText="Ohm Ω" />
         </HBox>
     </Pane>
 </SplitPane>
