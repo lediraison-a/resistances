@@ -72,4 +72,12 @@ public class CouleursAnneaux {
         put(CouleurResistance.ABSENT, 20.0);
     }};
 
+    public static Map<CouleurResistance, Integer> COULEURS_ANNEAU_TEMPERATURE = new HashMap<>() {{
+        put(CouleurResistance.NOIR, 200);
+        put(CouleurResistance.MARRON, 100);
+        put(CouleurResistance.ROUGE, 50);
+        put(CouleurResistance.ORANGE, 25);
+        put(CouleurResistance.JAUNE, 15);
+    }};
+
 }
