@@ -2,20 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane orientation="VERTICAL" prefHeight="545.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.PrimaryController">
+<SplitPane orientation="VERTICAL" prefHeight="545.0" prefWidth="643.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
     <Pane id="MainPane" prefHeight="200.0" prefWidth="236.0">
-        <Button id="CalculerBtn" layoutX="240.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="Calculer" />
+        <Button id="CalculerBtn" layoutX="240.0" layoutY="314.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="Calculer" />
         <ImageView id="ImgResistance" fitHeight="172.0" fitWidth="361.0" layoutX="149.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../../assets/resistance.png" />
         </ImageView>
-        <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="21.0" layoutY="247.0" nodeOrientation="LEFT_TO_RIGHT">
+        <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="21.0" layoutY="247.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="652.0">
             <ComboBox id="FirstColorPicker" promptText="Noir = 0" />
             <ComboBox id="SecondColorPicker" promptText="Noir = 0" />
             <ComboBox id="ThirdColorPicker" promptText="Noir = 0" />
@@ -27,5 +29,10 @@
             <TextField id="ResultTextField" text="0.00" />
             <ComboBox id="ResultComboPicker" prefHeight="25.0" prefWidth="110.0" promptText="Ohm Ω" />
         </HBox>
+      <Label id="lblNomResistance" alignment="CENTER" contentDisplay="CENTER" layoutX="259.0" layoutY="195.0" prefHeight="25.0" prefWidth="125.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
     </Pane>
 </SplitPane>
