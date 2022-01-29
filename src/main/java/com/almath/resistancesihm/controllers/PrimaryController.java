@@ -44,7 +44,7 @@ public class PrimaryController {
 
     @FXML
     private void onChangeCombox(ActionEvent event) {
-        ComboBox<ComboxLineData<Object>> combox = (ComboBox<ComboxLineData<Object>>) event.getSource();
+        var combox = (ComboBox<ComboxLineData<Object>>) event.getSource();
         System.out.println(combox.getValue().toString());
         resistancePreviewController.updatePreview(
                 combox.getValue().getAnneau(),
@@ -81,16 +81,13 @@ public class PrimaryController {
     private <T> void initialiserComboxe(ComboBox<ComboxLineData<T>> combox, Map<CouleurResistance, T> m, Function<T, String> getValue, Anneau anneau) {
         ObservableList<ComboxLineData<T>> combLines = combox.getItems();
         m.forEach((couleurResistance, val) -> {
-            ComboxLineData<T> lineData = new ComboxLineData<T>(couleurResistance, anneau, getValue, val);
-            combLines.add(lineData);
-            if(couleurResistance == anneau.getValeurDepart()) {
-                combox.setValue(lineData);
-            }
+            combLines.add(new ComboxLineData<T>(couleurResistance, anneau, getValue, val));
         });
         combLines.sort(Comparator.comparingInt(tComboxLineData -> tComboxLineData.getCouleurResistance().getOrdre()));
         combox.setCellFactory(comboxLineDataListView -> new ComboBoxColorCell<>());
         combox.setButtonCell(new ComboBoxColorCell<>());
         combox.setItems(combLines);
+        combox.setValue(combLines.filtered(tComboxLineData -> tComboxLineData.getCouleurResistance() == anneau.getValeurDepart()).get(0));
         resistancePreviewController.updatePreview(anneau, combox.getValue().getCouleurResistance());
     }
 }

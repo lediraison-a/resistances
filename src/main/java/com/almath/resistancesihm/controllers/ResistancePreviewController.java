@@ -28,7 +28,7 @@ public class ResistancePreviewController {
     }
 
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
-        Rectangle r = anneauxPreviewMap.get(anneau);
+        var r = anneauxPreviewMap.get(anneau);
         if(couleurResistance == CouleurResistance.ABSENT) {
             r.setVisible(false);
         } else {
