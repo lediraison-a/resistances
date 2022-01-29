@@ -7,22 +7,6 @@ import java.util.Map;
 
 public class CouleursAnneaux {
 
-    public static Map<CouleurResistance, Integer> COULEURS_ORDRE = new HashMap<>() {{
-        put(CouleurResistance.ABSENT, -1);
-        put(CouleurResistance.NOIR, 0);
-        put(CouleurResistance.MARRON, 1);
-        put(CouleurResistance.ROUGE, 2);
-        put(CouleurResistance.ORANGE, 3);
-        put(CouleurResistance.JAUNE, 4);
-        put(CouleurResistance.VERT, 5);
-        put(CouleurResistance.BLEU, 6);
-        put(CouleurResistance.VIOLET, 7);
-        put(CouleurResistance.GRIS, 8);
-        put(CouleurResistance.BLANC, 9);
-        put(CouleurResistance.OR, 10);
-        put(CouleurResistance.ARGENT, 11);
-    }};
-
     public static Map<CouleurResistance, Integer> COULEURS_ANNEAU_1 = new HashMap<>() {{
         put(CouleurResistance.NOIR, 0);
         put(CouleurResistance.MARRON, 1);

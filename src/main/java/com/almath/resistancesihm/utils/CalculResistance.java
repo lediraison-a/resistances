@@ -10,36 +10,25 @@ public class CalculResistance {
 
     public static double getResistance (
             int nbCouleursCalcul,
-            CouleurResistance c1,
-            CouleurResistance c2,
-            CouleurResistance c3,
-            CouleurResistance cMultiplicateur) {
+            int n1,
+            int n2,
+            int n3,
+            int multiplicateur) {
 
         // la valeur des 3 premiers anneaux
         int chiffre = 0;
         // pour le calcul des 3 premiers anneaux
         double nbChffreMult = 1;
 
-
         // Si il y'a plus de 3 anneaux sur la resistance, on ajoute la valeur du 3 eme annneau au chiffre
         if(nbCouleursCalcul > 3) {
-            chiffre += CouleursAnneaux.COULEURS_ANNEAU_3.get(c3);
+            chiffre += n3;
             nbChffreMult = 10;
         }
-
         // valeur des deux premiers anneaux
-        chiffre += (CouleursAnneaux.COULEURS_ANNEAU_1.get(c1) * (nbChffreMult * 10)) + (CouleursAnneaux.COULEURS_ANNEAU_2.get(c2) * (nbChffreMult));
-
-        // valeur anneau multiplicateur
-        double multiplicateur = Math.pow(10.0, CouleursAnneaux.COULEURS_ANNEAU_MULTIPLICATEUR.get(cMultiplicateur));
+        chiffre += (n1 * (nbChffreMult * 10)) + (n2 * (nbChffreMult));
 
         // 3 premiers anneaux x multiplicateur
-        return chiffre * multiplicateur;
+        return chiffre * Math.pow(10.0, multiplicateur);
     }
-
-    public static double getTolerance(CouleurResistance cTolerance) {
-        return CouleursAnneaux.COULEURS_ANNEAU_TOLERANCE.get(cTolerance);
-    }
-
-
 }
