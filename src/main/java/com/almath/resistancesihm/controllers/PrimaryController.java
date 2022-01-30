@@ -1,10 +1,5 @@
 package com.almath.resistancesihm.controllers;
 
-import java.io.IOException;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Function;
-
 import com.almath.resistancesihm.App;
 import com.almath.resistancesihm.models.Anneau;
 import com.almath.resistancesihm.models.ComboxLineData;
@@ -18,7 +13,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Function;
 
 public class PrimaryController {
 
@@ -43,8 +42,8 @@ public class PrimaryController {
     }
 
     @FXML
-    private void onChangeCombox(ActionEvent event) {
-        var combox = (ComboBox<ComboxLineData<Object>>) event.getSource();
+    private <T> void onChangeCombox(ActionEvent event) {
+        var combox = (ComboBox<ComboxLineData<T>>) event.getSource();
         System.out.println(combox.getValue().toString());
         resistancePreviewController.updatePreview(
                 combox.getValue().getAnneau(),
@@ -78,10 +77,10 @@ public class PrimaryController {
         initialiserComboxe(comboxTolerance, CouleursAnneaux.COULEURS_ANNEAU_TOLERANCE, (v) -> String.format("%.1f%%", v), Anneau.TOLER);
         initialiserComboxe(comboxTemp, CouleursAnneaux.COULEURS_ANNEAU_TEMPERATURE, (v) -> String.format("%d ppm", v), Anneau.TEMP);
     }
-    private <T> void initialiserComboxe(ComboBox<ComboxLineData<T>> combox, Map<CouleurResistance, T> m, Function<T, String> getValue, Anneau anneau) {
+    private <T> void initialiserComboxe(ComboBox<ComboxLineData<T>> combox, Map<CouleurResistance, T> couleursAnneau, Function<T, String> dispValeurAssocie, Anneau anneau) {
         ObservableList<ComboxLineData<T>> combLines = combox.getItems();
-        m.forEach((couleurResistance, val) -> {
-            combLines.add(new ComboxLineData<T>(couleurResistance, anneau, getValue, val));
+        couleursAnneau.forEach((couleurResistance, valeurAssocie) -> {
+            combLines.add(new ComboxLineData<T>(couleurResistance, anneau, dispValeurAssocie, valeurAssocie));
         });
         combLines.sort(Comparator.comparingInt(tComboxLineData -> tComboxLineData.getCouleurResistance().getOrdre()));
         combox.setCellFactory(comboxLineDataListView -> new ComboBoxColorCell<>());
