@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Comparator;
@@ -27,8 +28,12 @@ public class PrimaryController {
             comboxThirdColor,
             comboxMultiplier,
             comboxTemp;
+
     @FXML
     private ComboBox<ComboxLineData<Double>> comboxTolerance;
+
+    @FXML
+    private TextField labelCalculer;
 
     @FXML
     private Parent resistancePreview;
@@ -61,6 +66,7 @@ public class PrimaryController {
 
         System.out.printf("\n resistance : %f", resistance);
         System.out.printf("\n tolerance : %f", tolerance);
+        labelCalculer.setText(String.format("%.2f", resistance));
     }
 
     public void initialize() {
