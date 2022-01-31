@@ -1,6 +1,7 @@
 package com.almath.resistancesihm;
 
 import javafx.application.Application;
+import javafx.css.Style;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 800, 600);
+        setUserAgentStylesheet(STYLESHEET_MODENA);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Calculateur de Résistance");

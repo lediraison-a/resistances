@@ -11,14 +11,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 
 public class PrimaryController {
@@ -30,18 +30,14 @@ public class PrimaryController {
             comboxThirdColor,
             comboxMultiplier,
             comboxTemp;
-
     @FXML
     private ComboBox<ComboxLineData<Double>> comboxTolerance;
-
     @FXML
     private TextField labelCalculer;
-
     @FXML
     private Label lblN1, lblN2, lblN3, lblMultiplicateur, lblTolerance, lblTemp;
-
     @FXML
-    private Parent resistancePreview;
+    private Parent rootPane, resistancePreview;
     @FXML
     private ResistancePreviewController resistancePreviewController;
 
@@ -87,7 +83,6 @@ public class PrimaryController {
             put(Anneau.TOLER, lblTolerance);
             put(Anneau.TEMP, lblTemp);
         }};
-
         initialiserComboxes();
     }
 
@@ -111,5 +106,16 @@ public class PrimaryController {
         combox.setValue(combLines.filtered(tComboxLineData -> tComboxLineData.getCouleurResistance() == anneau.getValeurDepart()).get(0));
         anneauxLabels.get(anneau).setText(combox.getValue().dispValeurAssocie());
         resistancePreviewController.updatePreview(anneau, combox.getValue().getCouleurResistance());
+    }
+
+    @FXML
+    private void switchThemeMode(ActionEvent event) {
+        // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
+        var darkStyle = Objects.requireNonNull(getClass().getResource("/styles/Modena_dark.css")).toExternalForm();
+        if(((CheckBox) event.getSource()).isSelected()) {
+            rootPane.getStylesheets().add(darkStyle);
+        } else {
+            rootPane.getStylesheets().remove(darkStyle);
+        }
     }
 }
