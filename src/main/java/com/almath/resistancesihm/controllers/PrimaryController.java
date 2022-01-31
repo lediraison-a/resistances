@@ -12,10 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -36,6 +38,9 @@ public class PrimaryController {
     private TextField labelCalculer;
 
     @FXML
+    private Label lblN1, lblN2, lblN3, lblMultiplicateur, lblTolerance, lblTemp;
+
+    @FXML
     private Parent resistancePreview;
     @FXML
     private ResistancePreviewController resistancePreviewController;
@@ -45,6 +50,8 @@ public class PrimaryController {
         App.setRoot("secondary");
     }
 
+    private Map<Anneau, Label> anneauxLabels;
+
     @FXML
     private <T> void onChangeCombox(ActionEvent event) {
         var combox = (ComboBox<ComboxLineData<T>>) event.getSource();
@@ -52,6 +59,8 @@ public class PrimaryController {
         resistancePreviewController.updatePreview(
                 combox.getValue().getAnneau(),
                 combox.getValue().getCouleurResistance());
+
+        anneauxLabels.get(combox.getValue().getAnneau()).setText(combox.getValue().dispValeurAssocie());
     }
 
     @FXML
@@ -70,6 +79,15 @@ public class PrimaryController {
     }
 
     public void initialize() {
+        anneauxLabels = new HashMap<>(){{
+            put(Anneau.N1, lblN1);
+            put(Anneau.N2, lblN2);
+            put(Anneau.N3, lblN3);
+            put(Anneau.MULT, lblMultiplicateur);
+            put(Anneau.TOLER, lblTolerance);
+            put(Anneau.TEMP, lblTemp);
+        }};
+
         initialiserComboxes();
     }
 
@@ -87,10 +105,11 @@ public class PrimaryController {
             combLines.add(new ComboxLineData<T>(couleurResistance, anneau, dispValeurAssocie, valeurAssocie));
         });
         combLines.sort(Comparator.comparingInt(tComboxLineData -> tComboxLineData.getCouleurResistance().getOrdre()));
-        combox.setCellFactory(comboxLineDataListView -> new ComboBoxColorCell<>());
-        combox.setButtonCell(new ComboBoxColorCell<>());
+        combox.setCellFactory(comboxLineDataListView -> new ComboBoxColorCell<>(false));
+        combox.setButtonCell(new ComboBoxColorCell<>(true));
         combox.setItems(combLines);
         combox.setValue(combLines.filtered(tComboxLineData -> tComboxLineData.getCouleurResistance() == anneau.getValeurDepart()).get(0));
+        anneauxLabels.get(anneau).setText(combox.getValue().dispValeurAssocie());
         resistancePreviewController.updatePreview(anneau, combox.getValue().getCouleurResistance());
     }
 }

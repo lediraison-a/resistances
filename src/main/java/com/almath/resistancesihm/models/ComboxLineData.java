@@ -17,10 +17,15 @@ public class ComboxLineData<T> {
 
     @Override
     public String toString() {
-        if(valeurAssocie == null) {
-            return "absent";
-        }
-        return String.format("%s - %s", couleurResistance.name().toLowerCase(), dispValeurAssocie.apply(valeurAssocie));
+        return valeurAssocie != null ? String.format("%s - %s", dispCouleur(), dispValeurAssocie()) : "absent";
+    }
+
+    public String dispValeurAssocie() {
+        return valeurAssocie != null ? dispValeurAssocie.apply(valeurAssocie) : "";
+    }
+
+    public String dispCouleur() {
+        return couleurResistance.name().toLowerCase();
     }
 
     public CouleurResistance getCouleurResistance() {

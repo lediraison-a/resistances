@@ -12,34 +12,78 @@
 <?import javafx.scene.text.Font?>
 
 <SplitPane orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
-    <Pane id="MainPane">
+    <Pane id="MainPane" prefHeight="600.0" prefWidth="800.0">
         <Button id="CalculerBtn" layoutX="318.0" layoutY="314.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="Calculer" />
       <ImageView fitHeight="248.0" fitWidth="442.0" layoutX="189.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../assets/resistance.png" />
          </image>
       </ImageView>
-        <HBox id="ColorPickerContainer" alignment="CENTER" layoutY="242.0" nodeOrientation="LEFT_TO_RIGHT">
-            <ComboBox id="FirstColorPicker" fx:id="comboxFirstColor" onAction="#onChangeCombox" />
-            <ComboBox id="SecondColorPicker" fx:id="comboxSecondColor" onAction="#onChangeCombox" />
-            <ComboBox id="ThirdColorPicker" fx:id="comboxThirdColor" onAction="#onChangeCombox" />
-            <ComboBox id="MultiplierPicker" fx:id="comboxMultiplier" onAction="#onChangeCombox" />
-            <ComboBox id="TolerancePicker" fx:id="comboxTolerance" onAction="#onChangeCombox" />
-            <ComboBox fx:id="comboxTemp" onAction="#onChangeCombox" />
+        <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="24.0" layoutY="229.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="750.0" spacing="5.0">
+            <ComboBox id="FirstColorPicker" fx:id="comboxFirstColor" onAction="#onChangeCombox" prefWidth="170.0" />
+            <ComboBox id="SecondColorPicker" fx:id="comboxSecondColor" onAction="#onChangeCombox" prefWidth="170.0" />
+            <ComboBox id="ThirdColorPicker" fx:id="comboxThirdColor" onAction="#onChangeCombox" prefWidth="170.0" />
+            <ComboBox id="MultiplierPicker" fx:id="comboxMultiplier" onAction="#onChangeCombox" prefWidth="170.0" />
+            <ComboBox id="TolerancePicker" fx:id="comboxTolerance" onAction="#onChangeCombox" prefWidth="170.0" />
+            <ComboBox fx:id="comboxTemp" onAction="#onChangeCombox" prefWidth="170.0" />
         </HBox>
         <HBox id="ResultContainer" alignment="CENTER" layoutX="267.0" layoutY="446.0">
             <ComboBox id="ResultComboPicker" prefHeight="25.0" prefWidth="110.0" promptText="Ohm Ω" />
             <TextField id="ResultTextField" fx:id="labelCalculer" editable="false" text="0.00" />
         </HBox>
-      <Label id="lblNomResistance" alignment="CENTER" contentDisplay="CENTER" layoutX="341.0" layoutY="195.0" prefHeight="25.0" prefWidth="125.0" text="Label" textAlignment="CENTER">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Label>
       <Pane layoutX="336.0" layoutY="33.0" prefHeight="92.0" prefWidth="148.0">
          <children>
               <fx:include fx:id="resistancePreview" snapToPixel="false" source="resistancePreview.fxml" />
          </children>
       </Pane>
+      <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="24.0" layoutY="205.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="750.0" spacing="5.0">
+         <children>
+            <Label fx:id="lblN1" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblN2" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblN3" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblMultiplicateur" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTolerance" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblTemp" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label layoutX="395.0" layoutY="203.0" text="x" textFill="#aba4a4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="524.0" layoutY="203.0" text="/" textFill="#aba4a4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="653.0" layoutY="203.0" text="/" textFill="#aba4a4">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
     </Pane>
 </SplitPane>
