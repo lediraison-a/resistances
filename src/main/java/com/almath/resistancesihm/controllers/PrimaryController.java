@@ -6,7 +6,6 @@ import com.almath.resistancesihm.models.ComboxLineData;
 import com.almath.resistancesihm.models.CouleurResistance;
 import com.almath.resistancesihm.utils.CalculResistance;
 import com.almath.resistancesihm.utils.Constantes.CouleursAnneaux;
-import com.almath.resistancesihm.utils.CouleursResistanceUtils;
 import com.almath.resistancesihm.views.ComboBoxColorCell;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -56,8 +55,7 @@ public class PrimaryController {
         var n2 = comboxSecondColor.getValue().getValeurAssocie();
         var n3 = comboxThirdColor.getValue().getValeurAssocie();
         var multiplier = comboxMultiplier.getValue().getValeurAssocie();
-        var nbCouleursCalcul = CouleursResistanceUtils.getNbCouleursCalcul(comboxThirdColor.getValue().getCouleurResistance());
-        var resistance = CalculResistance.getResistance(nbCouleursCalcul, n1, n2, n3, multiplier);
+        var resistance = CalculResistance.getResistance(n1, n2, n3, multiplier);
         var tolerance = comboxTolerance.getValue().getValeurAssocie();
         var temp = comboxTemp.getValue().getValeurAssocie();
 

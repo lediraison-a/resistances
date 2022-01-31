@@ -25,7 +25,7 @@ public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
             setText(item.toString());
         } else {
             setGraphic(null);
-            setText("absent");
+            setText(item.toString());
         }
     }
 }

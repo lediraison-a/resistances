@@ -44,7 +44,7 @@ public class CouleursAnneaux {
         put(CouleurResistance.VIOLET, 7);
         put(CouleurResistance.GRIS, 8);
         put(CouleurResistance.BLANC, 9);
-        put(CouleurResistance.ABSENT, -1);
+        put(CouleurResistance.ABSENT, null);
     }};
 
     public static Map<CouleurResistance, Integer> COULEURS_ANNEAU_MULTIPLICATEUR = new HashMap<>() {{
@@ -81,7 +81,7 @@ public class CouleursAnneaux {
         put(CouleurResistance.ROUGE, 50);
         put(CouleurResistance.ORANGE, 25);
         put(CouleurResistance.JAUNE, 15);
-        put(CouleurResistance.ABSENT, -1);
+        put(CouleurResistance.ABSENT, null);
     }};
 
 }

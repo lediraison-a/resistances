@@ -17,6 +17,9 @@ public class ComboxLineData<T> {
 
     @Override
     public String toString() {
+        if(valeurAssocie == null) {
+            return "absent";
+        }
         return String.format("%s - %s", couleurResistance.name().toLowerCase(), dispValeurAssocie.apply(valeurAssocie));
     }
 
