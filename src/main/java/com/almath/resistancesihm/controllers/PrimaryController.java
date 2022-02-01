@@ -2,6 +2,8 @@ package com.almath.resistancesihm.controllers;
 
 import com.almath.resistancesihm.App;
 import com.almath.resistancesihm.models.Anneau;
+import com.almath.resistancesihm.models.ComboxLineData;
+import com.almath.resistancesihm.models.ConvertData;
 import com.almath.resistancesihm.utils.CalculResistance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +21,8 @@ public class PrimaryController {
 
     // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
+
+    private Double valeurOhm;
 
     @FXML
     private TextField labelCalculer;
@@ -47,6 +51,7 @@ public class PrimaryController {
         System.out.printf("\n resistance : %f", resistance);
         System.out.printf("\n tolerance : %f", tolerance);
         labelCalculer.setText(String.format("%.2f", resistance));
+        valeurOhm = resistance;
     }
 
     @FXML
@@ -61,26 +66,32 @@ public class PrimaryController {
 
     @FXML
     public void onChangeCombox(ActionEvent actionEvent) {
+        if (comboxConvert == actionEvent.getSource()) {
+            ConvertData convertData = new ConvertData();
+            var valeurCombox = comboxConvert.getValue(); // la valeur de la combox box après avoir été modifée (le texte)
+            var valeurPuissance = convertData.getMapConvert().get(valeurCombox); // la valeur de la puissance
+
+            var currentText = labelCalculer.getText();
+            currentText = currentText.replace(',', '.');
+            System.out.println(currentText);
+
+            var newValue = valeurOhm * Math.pow(10, valeurPuissance);
+
+            var newText = String.valueOf(newValue);
+            System.out.println(newText);
+            labelCalculer.setText(newText);
+        }
     }
 
     public void initialize() {
-        HashMap<String, Integer> map = new HashMap<String, Integer>() {{
-            put("Nanoohm nΩ", 9);
-            put("Microohm µΩ", 6);
-            put("Milliohm mΩ", 3);
-            put("Ohm Ω", 1);
-            put("Kiloohm kΩ", -3);
-            put("Mégaohm mΩ", -6);
-            put("Gigaohm GΩ", -9);
-        }};
-        HashMap<String, Integer> sortedMap = new LinkedHashMap();
+        valeurOhm = Double.parseDouble(labelCalculer.getText());
+        ConvertData convertData = new ConvertData();
+        HashMap<String, Integer> map = convertData.getMapConvert();
+        HashMap<String, Integer> sortedMap = new LinkedHashMap<String, Integer>();
         map.entrySet().
                 stream().
                 sorted(Map.Entry.comparingByValue()).
                 forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
-
-        System.out.println(sortedMap);
-
         ObservableList<String> list = FXCollections.observableArrayList(sortedMap.keySet());
         comboxConvert.setItems(list);
         comboxConvert.getSelectionModel().select(3);
