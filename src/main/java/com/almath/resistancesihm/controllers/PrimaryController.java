@@ -3,14 +3,17 @@ package com.almath.resistancesihm.controllers;
 import com.almath.resistancesihm.App;
 import com.almath.resistancesihm.models.Anneau;
 import com.almath.resistancesihm.utils.CalculResistance;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import java.util.Objects;
+import java.util.*;
 
 public class PrimaryController {
 
@@ -19,6 +22,8 @@ public class PrimaryController {
 
     @FXML
     private TextField labelCalculer;
+    @FXML
+    private ComboBox<String> comboxConvert;
     @FXML
     private Parent rootPane, colorSelect;
     @FXML
@@ -54,5 +59,30 @@ public class PrimaryController {
         }
     }
 
+    @FXML
+    public void onChangeCombox(ActionEvent actionEvent) {
+    }
 
+    public void initialize() {
+        HashMap<String, Integer> map = new HashMap<String, Integer>() {{
+            put("Nanoohm nΩ", 9);
+            put("Microohm µΩ", 6);
+            put("Milliohm mΩ", 3);
+            put("Ohm Ω", 1);
+            put("Kiloohm kΩ", -3);
+            put("Mégaohm mΩ", -6);
+            put("Gigaohm GΩ", -9);
+        }};
+        HashMap<String, Integer> sortedMap = new LinkedHashMap();
+        map.entrySet().
+                stream().
+                sorted(Map.Entry.comparingByValue()).
+                forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+
+        System.out.println(sortedMap);
+
+        ObservableList<String> list = FXCollections.observableArrayList(sortedMap.keySet());
+        comboxConvert.setItems(list);
+        comboxConvert.getSelectionModel().select(3);
+    }
 }
