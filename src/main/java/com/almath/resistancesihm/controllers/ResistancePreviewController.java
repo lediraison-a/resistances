@@ -28,12 +28,12 @@ public class ResistancePreviewController {
     }
 
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
-        var r = anneauxPreviewMap.get(anneau);
+        var rectangle = anneauxPreviewMap.get(anneau);
         if(couleurResistance == CouleurResistance.ABSENT) {
-            r.setVisible(false);
+            rectangle.setVisible(false);
         } else {
-            r.setVisible(true);
-            r.setFill(Color.web(couleurResistance.getCouleurWeb()));
+            rectangle.setVisible(true);
+            rectangle.setFill(Color.web(couleurResistance.getCouleurWeb()));
         }
     }
 }

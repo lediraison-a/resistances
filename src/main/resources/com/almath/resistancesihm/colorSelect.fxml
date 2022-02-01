@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="322.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.ColorSelectController">
+   <children>
+      <Pane layoutX="262.0" layoutY="78.0" prefHeight="61.0" prefWidth="281.0">
+         <children>
+            <fx:include fx:id="resistancePreview" snapToPixel="false" source="resistancePreview.fxml" />
+         </children>
+      </Pane>
+      <Pane layoutY="157.0" prefHeight="159.0" prefWidth="805.0">
+         <children>
+            <HBox layoutX="28.0" layoutY="40.0" prefHeight="21.0" prefWidth="750.0">
+               <children>
+                  <Label prefWidth="170.0" text="chiffres significatifs :" />
+                  <Label prefWidth="170.0" />
+                  <Label prefWidth="170.0" />
+                  <Label prefWidth="170.0" text="multiplicateur :" />
+                  <Label prefWidth="170.0" text="tolérance :" />
+                  <Label prefWidth="170.0" text="température :" />
+               </children>
+            </HBox>
+            <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="29.0" layoutY="89.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="750.0" spacing="5.0">
+               <children>
+                  <ComboBox id="FirstColorPicker" fx:id="comboxFirstColor" onAction="#onChangeCombox" prefWidth="170.0" />
+                  <ComboBox id="SecondColorPicker" fx:id="comboxSecondColor" onAction="#onChangeCombox" prefWidth="170.0" />
+                  <ComboBox id="ThirdColorPicker" fx:id="comboxThirdColor" onAction="#onChangeCombox" prefWidth="170.0" />
+                  <ComboBox id="MultiplierPicker" fx:id="comboxMultiplier" onAction="#onChangeCombox" prefWidth="170.0" />
+                  <ComboBox id="TolerancePicker" fx:id="comboxTolerance" onAction="#onChangeCombox" prefWidth="170.0" />
+                  <ComboBox fx:id="comboxTemp" onAction="#onChangeCombox" prefWidth="170.0" />
+               </children>
+            </HBox>
+            <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="28.0" layoutY="60.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="750.0" spacing="5.0">
+               <children>
+                  <Label fx:id="lblN1" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblN2" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblN3" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblMultiplicateur" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTolerance" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTemp" alignment="CENTER" contentDisplay="CENTER" prefWidth="300.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label layoutX="399.0" layoutY="62.0" text="x" textFill="#aba4a4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="653.0" layoutY="62.0" text="/" textFill="#aba4a4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="527.0" layoutY="62.0" text="/" textFill="#aba4a4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
