@@ -71,14 +71,9 @@ public class PrimaryController {
             var valeurCombox = comboxConvert.getValue(); // la valeur de la combox box après avoir été modifée (le texte)
             var valeurPuissance = convertData.getMapConvert().get(valeurCombox); // la valeur de la puissance
 
-            var currentText = labelCalculer.getText();
-            currentText = currentText.replace(',', '.');
-            System.out.println(currentText);
-
             var newValue = valeurOhm * Math.pow(10, valeurPuissance);
+            var newText = String.format("%e", newValue); // notation scientifique
 
-            var newText = String.valueOf(newValue);
-            System.out.println(newText);
             labelCalculer.setText(newText);
         }
     }
