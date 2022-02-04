@@ -18,9 +18,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +33,7 @@ public class PrimaryController {
 
     // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
+    private static final String PAGE_AIDE = "https://git.alediraison.com/firnen/resistances/activity";
 
     private double valeurOhm;
     private boolean appThemeDark;
@@ -130,6 +133,12 @@ public class PrimaryController {
     }
 
     public void visiterAide(ActionEvent actionEvent) {
+        try {
+            if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                Desktop.getDesktop().browse(new URI(PAGE_AIDE));
+            }
+        } catch (Exception e) {
 
+        }
     }
 }
