@@ -115,4 +115,17 @@ public class ColorSelectController {
     public <T> T getComboxValue(Anneau anneau) {
         return ((ComboxLineData<T>) anneauxData.get(anneau).getComboBox().getValue()).getValeurAssocie();
     }
+
+    public <T> String getNomResistance() {
+        return  getComboxAbrev(Anneau.N1) +
+                getComboxAbrev(Anneau.N2) +
+                getComboxAbrev(Anneau.N3) +
+                getComboxAbrev(Anneau.MULT) +
+                getComboxAbrev(Anneau.TOLER) +
+                getComboxAbrev(Anneau.TEMP);
+    }
+
+    private <T> String getComboxAbrev(Anneau anneau) {
+        return ((ComboxLineData<T>) anneauxData.get(anneau).getComboBox().getValue()).getCouleurResistance().getAbrev();
+    }
 }

@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<SplitPane fx:id="rootPane" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
+<SplitPane fx:id="rootPane" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
     <Pane id="MainPane" prefHeight="600.0" prefWidth="800.0">
-      <HBox alignment="TOP_RIGHT" layoutX="646.0" layoutY="14.0" prefHeight="32.0" prefWidth="139.0" spacing="5.0">
-         <children>
-            <Label text="mode sombre" />
-            <CheckBox fx:id="checkThemeDark" mnemonicParsing="false" onAction="#switchThemeMode" />
-         </children>
-      </HBox>
 
         <Pane layoutX="-4.0" layoutY="46.0">
             <children>
                 <fx:include fx:id="colorSelect" snapToPixel="false" source="colorSelect.fxml" />
             </children>
         </Pane>
-        <Button id="CalculerBtn" layoutX="317.0" layoutY="390.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="Calculer" />
+        <Button id="CalculerBtn" layoutX="317.0" layoutY="390.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="Calculer">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
         <HBox id="ResultContainer" alignment="CENTER" layoutX="263.0" layoutY="494.0">
             <TextField id="ResultTextField" fx:id="labelCalculer" editable="false" prefHeight="25.0" prefWidth="121.0" text="0.00" />
-            <ComboBox id="ResultComboPicker" fx:id="comboxConvert" onAction="#onChangeCombox" prefHeight="25.0" prefWidth="125.0" promptText="Ohm Ω" />
+            <ComboBox id="ResultComboPicker" fx:id="comboxConvert" onAction="#onChangeComboxConvertion" prefHeight="25.0" prefWidth="125.0" promptText="Ohm Ω" />
         </HBox>
+      <MenuBar layoutX="-4.0" layoutY="1.0" prefHeight="27.0" prefWidth="805.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Fichier">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#quitterApp" text="Quitter" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportAsPng" text="Exporter en png" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Theme">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#switchThemeMode" text="Clair" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchThemeMode" text="Sombre" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Aide">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#visiterAide" text="Visiter la page d'aide" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
 
     </Pane>
 </SplitPane>

@@ -3,6 +3,7 @@ package com.almath.resistancesihm.controllers;
 import com.almath.resistancesihm.models.Anneau;
 import com.almath.resistancesihm.models.CouleurResistance;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -36,4 +37,6 @@ public class ResistancePreviewController {
             rectangle.setFill(Color.web(couleurResistance.getCouleurWeb()));
         }
     }
+
+
 }
