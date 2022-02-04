@@ -33,7 +33,7 @@ public class PrimaryController {
 
     // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
-    private static final String PAGE_AIDE = "https://git.alediraison.com/firnen/resistances/activity";
+    private static final String PAGE_AIDE = "https://git.alediraison.com/firnen/resistances/src/branch/master/HELP.md";
 
     private double valeurOhm;
     private boolean appThemeDark;
