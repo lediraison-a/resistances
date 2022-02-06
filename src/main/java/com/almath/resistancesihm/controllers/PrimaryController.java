@@ -49,12 +49,8 @@ public class PrimaryController implements Initializable {
     @FXML
     private MenuItem menuDark, menuLight, menuLangFr, menuLangEn;
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
-    }
-
     private ResourceBundle resourceBundle;
+    private Map<MenuItem, Locale> languages;
 
     @FXML
     private void runCalculer(ActionEvent event) {
@@ -92,6 +88,10 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        languages = new HashMap<>() {{
+            put(menuLangFr, Locale.FRENCH);
+            put(menuLangEn, Locale.US);
+        }};
         this.resourceBundle = resourceBundle;
         valeurOhm = 0;
         setTheme(false);
@@ -104,8 +104,8 @@ public class PrimaryController implements Initializable {
 
     public void exportAsPng(ActionEvent event) {
         Scene currentScene = rootPane.getScene();
-        String date = new SimpleDateFormat("dd-MM-yy-h:mm").format(Calendar.getInstance().getTime());
-        String filename = colorSelectController.getNomResistance() + date + ".png";
+        String date = new SimpleDateFormat("ddMMyy-h:mm").format(Calendar.getInstance().getTime());
+        String filename = colorSelectController.getNomResistance() + "-" + date + ".png";
         File imageFile = getFileChooser(filename).showSaveDialog(rootPane.getScene().getWindow());
         if(imageFile != null) {
             try {
@@ -136,17 +136,16 @@ public class PrimaryController implements Initializable {
                 Desktop.getDesktop().browse(new URI(PAGE_AIDE));
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
     }
 
     public void changeLocal(ActionEvent actionEvent) {
+        Locale.setDefault(languages.get((MenuItem) actionEvent.getSource()));
         ((Stage) rootPane.getScene().getWindow()).close();
         Platform.runLater(() -> {
             try {
-                new App().startLang(
-                        new Stage(),
-                        actionEvent.getSource().equals(menuLangFr) ? Locale.FRENCH : Locale.ENGLISH);
+                new App().start(new Stage());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -165,16 +164,11 @@ public class PrimaryController implements Initializable {
     }
 
     private void setLangMenu() {
-        if(resourceBundle.getString("menubar.menu_lang_fr").equals(
-                ResourceBundle.getBundle("locales.app", Locale.FRENCH)
-                        .getString("menubar.menu_lang_fr"))) {
-            menuLangFr.setDisable(true);
-        }
-        if(resourceBundle.getString("menubar.menu_lang_en").equals(
-                ResourceBundle.getBundle("locales.app", Locale.ENGLISH)
-                        .getString("menubar.menu_lang_en"))) {
-            menuLangEn.setDisable(true);
-        }
+        languages.forEach((menuItem, locale) -> {
+            if(Objects.equals(Locale.getDefault().getLanguage(), locale.getLanguage())) {
+                menuItem.setDisable(true);
+            }
+        });
     }
 
 }

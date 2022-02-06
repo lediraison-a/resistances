@@ -17,30 +17,19 @@ public class App extends Application {
 
     private static Scene scene;
 
-    private Locale lang;
-
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary", lang), 800, 600);
+        scene = new Scene(loadFXML("primary"), 800, 600);
         setUserAgentStylesheet(STYLESHEET_MODENA);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setTitle(getLocaleResource(lang).getString("window.title"));
+        stage.setTitle(getLocaleResource().getString("window.title"));
         stage.show();
     }
 
-    public void startLang(Stage stage, Locale lang) throws IOException {
-        this.lang = lang;
-        start(stage);
-    }
-
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml, null));
-    }
-
-    private static Parent loadFXML(String fxml, Locale lang) throws IOException {
+    private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        fxmlLoader.setResources(getLocaleResource(lang));
+        fxmlLoader.setResources(getLocaleResource());
         return fxmlLoader.load();
     }
 
@@ -48,7 +37,7 @@ public class App extends Application {
         launch();
     }
 
-    public static ResourceBundle getLocaleResource(Locale lang) {
-        return ResourceBundle.getBundle("locales.app", lang == null ? Locale.getDefault() : lang);
+    public static ResourceBundle getLocaleResource() {
+        return ResourceBundle.getBundle("locales.app", Locale.getDefault());
     }
 }
