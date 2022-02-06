@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="rootPane" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
+<SplitPane fx:id="rootPane" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.almath.resistancesihm.controllers.PrimaryController">
     <Pane id="MainPane" prefHeight="600.0" prefWidth="800.0">
 
         <Pane layoutX="-4.0" layoutY="46.0">
@@ -12,7 +19,7 @@
                 <fx:include fx:id="colorSelect" snapToPixel="false" source="colorSelect.fxml" />
             </children>
         </Pane>
-        <Button id="CalculerBtn" layoutX="317.0" layoutY="390.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="Calculer">
+        <Button id="CalculerBtn" layoutX="317.0" layoutY="390.0" mnemonicParsing="false" onAction="#runCalculer" prefHeight="25.0" prefWidth="163.0" text="%button.calculer">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -22,22 +29,29 @@
         </HBox>
       <MenuBar layoutX="-4.0" layoutY="1.0" prefHeight="27.0" prefWidth="805.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Fichier">
+          <Menu mnemonicParsing="false" text="%menubar.title_fichier">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#quitterApp" text="Quitter" />
-                  <MenuItem mnemonicParsing="false" onAction="#exportAsPng" text="Exporter en png" />
-               </items></Menu>
-          <Menu mnemonicParsing="false" text="Theme">
+                  <MenuItem mnemonicParsing="false" onAction="#quitterApp" text="%menubar.menu_exit" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportAsPng" text="%menubar.menu_export" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="%menubar.title_theme">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#switchThemeMode" text="Clair" />
-                  <MenuItem mnemonicParsing="false" onAction="#switchThemeMode" text="Sombre" />
+              <MenuItem fx:id="menuLight" mnemonicParsing="false" onAction="#switchThemeMode" text="%menubar.menu_lighttheme" />
+                  <MenuItem fx:id="menuDark" mnemonicParsing="false" onAction="#switchThemeMode" text="%menubar.menu_darktheme" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Aide">
+          <Menu mnemonicParsing="false" text="%menubar.title_aide">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#visiterAide" text="Visiter la page d'aide" />
+              <MenuItem mnemonicParsing="false" onAction="#visiterAide" text="%menubar.menu_helppage" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="%menubar.title_language">
+               <items>
+                  <MenuItem fx:id="menuLangFr" mnemonicParsing="false" onAction="#changeLocal" text="%menubar.menu_lang_fr" />
+                  <MenuItem fx:id="menuLangEn" mnemonicParsing="false" onAction="#changeLocal" text="%menubar.menu_lang_en" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
 

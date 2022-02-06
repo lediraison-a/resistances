@@ -7,12 +7,19 @@ public class ComboxLineData<T> {
     private Anneau anneau;
     private Function<T, String> dispValeurAssocie;
     private T valeurAssocie;
+    private String colorName;
 
-    public ComboxLineData(CouleurResistance couleurResistance, Anneau anneau, Function<T, String> dispValeurAssocie, T valeurAssocie) {
+    public ComboxLineData(
+            CouleurResistance couleurResistance,
+            Anneau anneau,
+            Function<T, String> dispValeurAssocie,
+            T valeurAssocie,
+            String colorName) {
         this.couleurResistance = couleurResistance;
         this.anneau = anneau;
         this.dispValeurAssocie = dispValeurAssocie;
         this.valeurAssocie = valeurAssocie;
+        this.colorName = colorName;
     }
 
     @Override
@@ -25,7 +32,7 @@ public class ComboxLineData<T> {
     }
 
     public String dispCouleur() {
-        return couleurResistance.name().toLowerCase();
+        return colorName;
     }
 
     public CouleurResistance getCouleurResistance() {

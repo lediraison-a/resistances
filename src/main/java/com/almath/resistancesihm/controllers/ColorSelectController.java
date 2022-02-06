@@ -7,16 +7,19 @@ import com.almath.resistancesihm.utils.Constantes.CouleursAnneaux;
 import com.almath.resistancesihm.views.ComboBoxColorCell;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.net.URL;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 import java.util.function.Function;
 
-public class ColorSelectController {
+public class ColorSelectController implements Initializable {
 
     private static class AnneauElement<T> {
         private ComboBox<ComboxLineData<T>> comboBox;
@@ -61,32 +64,33 @@ public class ColorSelectController {
         anneauxData.get(combox.getValue().getAnneau()).getLabel().setText(combox.getValue().dispValeurAssocie());
     }
 
-    public void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         anneauxData = new HashMap<>(){{
             put(Anneau.N1, new AnneauElement(initialiserComboxe(comboxFirstColor,
                     CouleursAnneaux.COULEURS_ANNEAU_1,
                     Object::toString,
-                    Anneau.N1, lblN1), lblN1));
+                    Anneau.N1, lblN1, resourceBundle), lblN1));
             put(Anneau.N2, new AnneauElement(initialiserComboxe(comboxSecondColor,
                     CouleursAnneaux.COULEURS_ANNEAU_2,
                     Object::toString,
-                    Anneau.N2, lblN2), lblN2));
+                    Anneau.N2, lblN2, resourceBundle), lblN2));
             put(Anneau.N3, new AnneauElement(initialiserComboxe(comboxThirdColor,
                     CouleursAnneaux.COULEURS_ANNEAU_3,
                     Object::toString
-                    , Anneau.N3, lblN3), lblN3));
+                    , Anneau.N3, lblN3, resourceBundle), lblN3));
             put(Anneau.MULT, new AnneauElement(initialiserComboxe(comboxMultiplier,
                     CouleursAnneaux.COULEURS_ANNEAU_MULTIPLICATEUR,
                     (v) -> String.format("10^%d", v),
-                    Anneau.MULT, lblMultiplicateur), lblMultiplicateur));
+                    Anneau.MULT, lblMultiplicateur, resourceBundle), lblMultiplicateur));
             put(Anneau.TOLER, new AnneauElement(initialiserComboxe(comboxTolerance,
                     CouleursAnneaux.COULEURS_ANNEAU_TOLERANCE,
                     (v) -> String.format("%.1f %%", v),
-                    Anneau.TOLER, lblTolerance), lblTolerance));
+                    Anneau.TOLER, lblTolerance, resourceBundle), lblTolerance));
             put(Anneau.TEMP, new AnneauElement(initialiserComboxe(comboxTemp,
                     CouleursAnneaux.COULEURS_ANNEAU_TEMPERATURE,
                     (v) -> String.format("%d ppm", v),
-                    Anneau.TEMP, lblTemp), lblTemp));
+                    Anneau.TEMP, lblTemp, resourceBundle), lblTemp));
         }};
     }
 
@@ -95,10 +99,16 @@ public class ColorSelectController {
             Map<CouleurResistance, T> couleursAnneau,
             Function<T, String> dispValeurAssocie,
             Anneau anneau,
-            Label label) {
+            Label label,
+            ResourceBundle resourceBundle) {
         var combLines = combox.getItems();
         couleursAnneau.forEach((couleurResistance, valeurAssocie) -> {
-            combLines.add(new ComboxLineData<T>(couleurResistance, anneau, dispValeurAssocie, valeurAssocie));
+            combLines.add(new ComboxLineData<T>(
+                    couleurResistance,
+                    anneau,
+                    dispValeurAssocie,
+                    valeurAssocie,
+                    resourceBundle.getString("color." + couleurResistance.name().toLowerCase())));
         });
         combLines.sort(Comparator.comparingInt(tComboxLineData ->
                 tComboxLineData.getCouleurResistance().getOrdre()));

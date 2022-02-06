@@ -18,12 +18,12 @@
          <children>
             <HBox layoutX="28.0" layoutY="40.0" prefHeight="21.0" prefWidth="750.0">
                <children>
-                  <Label prefWidth="170.0" text="chiffres significatifs :" />
+                  <Label prefWidth="170.0" text="%label.significatif" />
                   <Label prefWidth="170.0" />
                   <Label prefWidth="170.0" />
-                  <Label prefWidth="170.0" text="multiplicateur :" />
-                  <Label prefWidth="170.0" text="tolérance :" />
-                  <Label prefWidth="170.0" text="température :" />
+                  <Label prefWidth="170.0" text="%label.multiplier" />
+                  <Label prefWidth="170.0" text="%label.toler" />
+                  <Label prefWidth="170.0" text="%label.temp" />
                </children>
             </HBox>
             <HBox id="ColorPickerContainer" alignment="CENTER" layoutX="29.0" layoutY="89.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="750.0" spacing="5.0">
