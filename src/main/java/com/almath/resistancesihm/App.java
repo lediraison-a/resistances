@@ -38,6 +38,6 @@ public class App extends Application {
     }
 
     public static ResourceBundle getLocaleResource() {
-        return ResourceBundle.getBundle("locales.app", Locale.getDefault());
+        return ResourceBundle.getBundle("locales.resistances", Locale.getDefault());
     }
 }
