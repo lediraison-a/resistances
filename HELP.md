@@ -1,1 +1,0 @@
-# Page d'aide pour l'application de calcul de résistance
