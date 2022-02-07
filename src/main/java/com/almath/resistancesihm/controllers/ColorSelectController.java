@@ -4,6 +4,7 @@ import com.almath.resistancesihm.models.Anneau;
 import com.almath.resistancesihm.models.ComboxLineData;
 import com.almath.resistancesihm.models.CouleurResistance;
 import com.almath.resistancesihm.utils.Constantes.CouleursAnneaux;
+import com.almath.resistancesihm.utils.Constantes.SuperscriptAscii;
 import com.almath.resistancesihm.views.ComboBoxColorCell;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -66,6 +68,11 @@ public class ColorSelectController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        resistancePreviewController.initialize(anneau -> {
+            anneauxData.get(anneau).getComboBox().show();
+            return null;
+        });
+
         anneauxData = new HashMap<>(){{
             put(Anneau.N1, new AnneauElement(initialiserComboxe(comboxFirstColor,
                     CouleursAnneaux.COULEURS_ANNEAU_1,
@@ -81,7 +88,7 @@ public class ColorSelectController implements Initializable {
                     , Anneau.N3, lblN3, resourceBundle), lblN3));
             put(Anneau.MULT, new AnneauElement(initialiserComboxe(comboxMultiplier,
                     CouleursAnneaux.COULEURS_ANNEAU_MULTIPLICATEUR,
-                    (v) -> String.format("10^%d", v),
+                    (v) -> String.format(v < 0 ? "10\u207B%s" : "10%s", SuperscriptAscii.superscriptChars.get(Math.abs(v))),
                     Anneau.MULT, lblMultiplicateur, resourceBundle), lblMultiplicateur));
             put(Anneau.TOLER, new AnneauElement(initialiserComboxe(comboxTolerance,
                     CouleursAnneaux.COULEURS_ANNEAU_TOLERANCE,
