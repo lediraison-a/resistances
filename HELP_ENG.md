@@ -12,7 +12,7 @@ Once the colors have been selected, click on the "compute" button and the displa
 This value is by default in Ohm, but the unit can be changed using the drop-down menu.
 
 ## Menus
-###The menu bar allows you to select different options:
+### The menu bar allows you to select different options:
 - First of all, the "File" tab allows you to quit the application, as well as export a screenshot in PNG format.
   The user can then choose the destination folder and the name of the saved file.
 
@@ -25,4 +25,4 @@ This value is by default in Ohm, but the unit can be changed using the drop-down
 - Finally, a "Help" tab provides access to a help page, which you are currently reading.
 
 
-####**Application created by Alban Le Diraison and Mathis Guillarmous - CIPA4 GL**
+#### **Application created by Alban Le Diraison and Mathis Guillarmous - CIPA4 GL**

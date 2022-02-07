@@ -12,7 +12,7 @@ Une fois les couleurs sélectionnées, on clique sur le bouton calculer et l'aff
 Cette valeur est par défaut en Ohm, mais l'unité peut être modifiée grâce au menu déroulant.
 
 ## Menus
-###La barre de menu permet de sélectionner différentes options :
+### La barre de menu permet de sélectionner différentes options :
 - Tout d'abord, l'onglet "Fichier" permet de quitter l'application, ainsi que d'exporter une capture d'écran au format PNG.
 L'utilisateur peut alors choisir le dossier de destination et le nom du fichier sauvegardé.
 
@@ -25,4 +25,4 @@ Changer la langue de l'application entraîne le rédémarrage de l'application, 
 - Enfin, un onglet "Aide" permet d'accéder à une page d'aide, que vous êtes actuellement en train de lire.
 
 
-####**Application réalisée par Alban Le Diraison et Mathis Guillarmou - CIPA4 GL**
+#### **Application réalisée par Alban Le Diraison et Mathis Guillarmou - CIPA4 GL**
