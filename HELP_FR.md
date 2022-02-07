@@ -7,7 +7,8 @@ En sélectionnant les couleurs de chaque bande, on obtient la valeur de sa rési
 Pour cela, il faut choisir parmis les couleurs proposées dans chaque bouton une couleur.
 On peut choisir une bande particulière en cliquant dessus, ou sur le menu déroulant correspondant.
 Certaines bandes peuvent avoir la couleur "absente", ce qui corréspond à une absence de bande.
-Au minimum 3 bandes doivent avoir des valeurs :
+
+Au minimum 3 bandes doivent avoir des valeurs : la première, la deuxième, et la quatrième, qui correspond au multiplicateur.
 
 Une fois les couleurs sélectionnées, on clique sur le bouton calculer et l'affichage de la valeur de la résistance est modifiée.
 Cette valeur est par défaut en Ohm, mais l'unité peut être modifiée grâce au menu déroulant.
