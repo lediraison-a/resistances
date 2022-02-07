@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.shape.StrokeType;
 
 import javax.swing.event.MenuDragMouseListener;
 import java.awt.event.MouseEvent;
@@ -26,6 +28,13 @@ public class ResistancePreviewController {
 
     public void initialize(Function<Anneau, Void> selectPrev) {
         this.selectPrev = selectPrev;
+
+        r1.setStroke(Color.BLACK);
+
+        r1.setStrokeWidth(2);
+        r1.setStrokeType(StrokeType.OUTSIDE);
+        r1.getStrokeDashArray().addAll(0.5,10.0);
+        r1.setStyle("-fx-border-style: dotted;");
 
         anneauxPreviewMap = new HashMap<>(){{
             put(Anneau.N1, r1);
