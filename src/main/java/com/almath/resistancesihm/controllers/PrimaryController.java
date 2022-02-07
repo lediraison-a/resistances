@@ -36,7 +36,7 @@ public class PrimaryController implements Initializable {
 
     // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
-    private static final String PAGE_AIDE = "https://git.alediraison.com/firnen/resistances/src/branch/master/HELP.md";
+    private static String PAGE_AIDE;
 
     private double valeurOhm;
     private ResourceBundle resourceBundle;
@@ -67,6 +67,7 @@ public class PrimaryController implements Initializable {
         lst.sort(Comparator.comparingInt(ConvertData.CONVERT_DATA::get));
         comboxConvert.setItems(FXCollections.observableArrayList(lst));
         comboxConvert.getSelectionModel().select(3);
+        PAGE_AIDE = resourceBundle.getString("menubar.menu_helpage_link");
     }
 
     public void runCalculer(ActionEvent event) {
