@@ -6,7 +6,10 @@ import com.almath.resistancesihm.models.CouleurResistance;
 import com.almath.resistancesihm.utils.Constantes.CouleursAnneaux;
 import com.almath.resistancesihm.utils.Constantes.SuperscriptAscii;
 import com.almath.resistancesihm.views.ComboBoxColorCell;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -124,6 +127,8 @@ public class ColorSelectController implements Initializable {
         combox.setItems(combLines);
         combox.setValue(combLines.filtered(tComboxLineData ->
                 tComboxLineData.getCouleurResistance() == anneau.getValeurDepart()).get(0));
+        combox.setOnHiding(event -> resistancePreviewController.unselectRectangle(anneau));
+        combox.setOnShowing(event -> resistancePreviewController.selectRectangle(anneau));
         label.setText(combox.getValue().dispValeurAssocie());
         resistancePreviewController.updatePreview(anneau, combox.getValue().getCouleurResistance());
         return combox;

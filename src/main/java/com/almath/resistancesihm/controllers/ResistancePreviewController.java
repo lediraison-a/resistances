@@ -28,14 +28,6 @@ public class ResistancePreviewController {
 
     public void initialize(Function<Anneau, Void> selectPrev) {
         this.selectPrev = selectPrev;
-
-        r1.setStroke(Color.BLACK);
-
-        r1.setStrokeWidth(2);
-        r1.setStrokeType(StrokeType.OUTSIDE);
-        r1.getStrokeDashArray().addAll(0.5,10.0);
-        r1.setStyle("-fx-border-style: dotted;");
-
         anneauxPreviewMap = new HashMap<>(){{
             put(Anneau.N1, r1);
             put(Anneau.N2, r2);
@@ -45,18 +37,25 @@ public class ResistancePreviewController {
             put(Anneau.TEMP, rTemp);
         }};
 
-        anneauxPreviewMap.forEach((anneau, rectangle) -> rectangle.setOnMouseClicked(mouseEvent ->
-                onClickPreview(mouseEvent.getSource())));
+        anneauxPreviewMap.forEach((anneau, rectangle) -> {
+            setRectangle(rectangle);
+            unselectRectangle(anneau);
+        });
+    }
+
+    private void setRectangle(Rectangle rectangle) {
+        rectangle.setOnMouseClicked(mouseEvent ->
+                onClickPreview(mouseEvent.getSource()));
+        rectangle.setStroke(Color.TRANSPARENT);
+        rectangle.setStrokeWidth(2);
+        rectangle.setStrokeType(StrokeType.OUTSIDE);
+        rectangle.getStrokeDashArray().addAll(0.5, 10.0);
     }
 
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
-        var rectangle = anneauxPreviewMap.get(anneau);
-        if(couleurResistance == CouleurResistance.ABSENT) {
-            rectangle.setVisible(false);
-        } else {
-            rectangle.setVisible(true);
-            rectangle.setFill(Color.web(couleurResistance.getCouleurWeb()));
-        }
+        anneauxPreviewMap.get(anneau).setFill(couleurResistance == CouleurResistance.ABSENT ?
+                Color.TRANSPARENT :
+                Color.web(couleurResistance.getCouleurWeb()));
     }
     
     public void onClickPreview(Object source) {
@@ -65,6 +64,14 @@ public class ResistancePreviewController {
                 selectPrev.apply(anneau);
             }
         });
+    }
+
+    public void selectRectangle(Anneau anneau) {
+        anneauxPreviewMap.get(anneau).setStroke(Color.BLACK);
+    }
+
+    public void unselectRectangle(Anneau anneau) {
+        anneauxPreviewMap.get(anneau).setStroke(Color.TRANSPARENT);
     }
 
 }
