@@ -24,19 +24,38 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.function.Function;
 
+/**
+ * The type Color select controller.
+ */
 public class ColorSelectController implements Initializable {
 
     private static class AnneauElement<T> {
         private ComboBox<ComboxLineData<T>> comboBox;
         private Label label;
 
+        /**
+         * Instantiates a new Anneau element.
+         *
+         * @param comboBox the combo box
+         * @param label    the label
+         */
         public AnneauElement(ComboBox<ComboxLineData<T>> comboBox, Label label) {
             this.comboBox = comboBox;
             this.label = label;
         }
 
+        /**
+         * Gets combo box.
+         *
+         * @return the combo box
+         */
         public ComboBox<ComboxLineData<T>> getComboBox() { return comboBox; }
 
+        /**
+         * Gets label.
+         *
+         * @return the label
+         */
         public Label getLabel() { return label; }
     }
 
@@ -134,10 +153,23 @@ public class ColorSelectController implements Initializable {
         return combox;
     }
 
+    /**
+     * Gets combox value.
+     *
+     * @param <T>    the type parameter
+     * @param anneau the anneau
+     * @return the combox value
+     */
     public <T> T getComboxValue(Anneau anneau) {
         return ((ComboxLineData<T>) anneauxData.get(anneau).getComboBox().getValue()).getValeurAssocie();
     }
 
+    /**
+     * Gets nom resistance.
+     *
+     * @param <T> the type parameter
+     * @return the nom resistance
+     */
     public <T> String getNomResistance() {
         return  getComboxAbrev(Anneau.N1) +
                 getComboxAbrev(Anneau.N2) +

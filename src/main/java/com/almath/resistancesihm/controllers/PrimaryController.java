@@ -32,6 +32,9 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * The type Primary controller.
+ */
 public class PrimaryController implements Initializable {
 
     // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
@@ -48,6 +51,9 @@ public class PrimaryController implements Initializable {
     private ComboBox<String> comboxConvert;
     @FXML
     private Parent rootPane, colorSelect;
+    /**
+     * The Color select controller.
+     */
     @FXML
     public ColorSelectController colorSelectController;
     @FXML
@@ -70,6 +76,11 @@ public class PrimaryController implements Initializable {
         PAGE_AIDE = resourceBundle.getString("menubar.menu_helpage_link");
     }
 
+    /**
+     * Run calculer.
+     *
+     * @param event the event
+     */
     public void runCalculer(ActionEvent event) {
         var n1 = colorSelectController.<Integer>getComboxValue(Anneau.N1);
         var n2 = colorSelectController.<Integer>getComboxValue(Anneau.N2);
@@ -87,11 +98,21 @@ public class PrimaryController implements Initializable {
         valeurOhm = resistance;
     }
 
+    /**
+     * Switch theme mode.
+     *
+     * @param event the event
+     */
     public void switchThemeMode(ActionEvent event) {
         boolean isDark = Objects.equals(event.getSource(), menuDark);
         setTheme(isDark);
     }
 
+    /**
+     * On change combox convertion.
+     *
+     * @param actionEvent the action event
+     */
     public void onChangeComboxConvertion(ActionEvent actionEvent) {
         var valeurCombox = comboxConvert.getValue(); // la valeur de la combox box après avoir été modifée (le texte)
         var valeurPuissance = ConvertData.CONVERT_DATA.get(valeurCombox); // la valeur de la puissance
@@ -100,6 +121,11 @@ public class PrimaryController implements Initializable {
         labelCalculer.setText(newText);
     }
 
+    /**
+     * Export as png.
+     *
+     * @param event the event
+     */
     public void exportAsPng(ActionEvent event) {
         Scene currentScene = rootPane.getScene();
         String date = new SimpleDateFormat("ddMMyy-h:mm").format(Calendar.getInstance().getTime());
@@ -116,10 +142,21 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    /**
+     * Quitter app.
+     *
+     * @param actionEvent the action event
+     */
     public void quitterApp(ActionEvent actionEvent) {
         System.exit(0);
     }
 
+    /**
+     * Visiter aide.
+     *
+     * @param actionEvent the action event
+     * @throws IOException the io exception
+     */
     public void visiterAide(ActionEvent actionEvent) throws IOException {
 //
 //        Stage popupwindow=new Stage();
@@ -149,6 +186,11 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    /**
+     * Change local.
+     *
+     * @param actionEvent the action event
+     */
     public void changeLocal(ActionEvent actionEvent) {
         Locale.setDefault(languages.get((MenuItem) actionEvent.getSource()));
         ((Stage) rootPane.getScene().getWindow()).close();

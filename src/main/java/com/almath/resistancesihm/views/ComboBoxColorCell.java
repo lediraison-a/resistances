@@ -6,12 +6,22 @@ import javafx.scene.control.ListCell;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+/**
+ * The type Combo box color cell.
+ *
+ * @param <T> the type parameter
+ */
 // http://www.java2s.com/Code/Java/JavaFX/customcellfactory.html
 public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
     private static final int RAYON_CERCLE_PREVIEW = 6;
 
     private boolean isComboxBtn;
 
+    /**
+     * Instantiates a new Combo box color cell.
+     *
+     * @param isComboxBtn the is combox btn
+     */
     public ComboBoxColorCell(boolean isComboxBtn) {
         this.isComboxBtn = isComboxBtn;
     }

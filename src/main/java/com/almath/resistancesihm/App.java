@@ -27,16 +27,33 @@ public class App extends Application {
         stage.show();
     }
 
+    /**
+     * Load fxml parent.
+     *
+     * @param fxml the fxml
+     * @return the parent
+     * @throws IOException the io exception
+     */
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         fxmlLoader.setResources(getLocaleResource());
         return fxmlLoader.load();
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * Gets locale resource.
+     *
+     * @return the locale resource
+     */
     public static ResourceBundle getLocaleResource() {
         try {
             return ResourceBundle.getBundle("locales.resistances", Locale.getDefault());

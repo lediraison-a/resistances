@@ -5,8 +5,14 @@ import com.almath.resistancesihm.models.CouleurResistance;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Couleurs anneaux.
+ */
 public class CouleursAnneaux {
 
+    /**
+     * The constant COULEURS_ANNEAU_1.
+     */
     public final static Map<CouleurResistance, Integer> COULEURS_ANNEAU_1 = new HashMap<>() {{
         put(CouleurResistance.NOIR, 0);
         put(CouleurResistance.MARRON, 1);
@@ -20,6 +26,9 @@ public class CouleursAnneaux {
         put(CouleurResistance.BLANC, 9);
     }};
 
+    /**
+     * The constant COULEURS_ANNEAU_2.
+     */
     public final static Map<CouleurResistance, Integer> COULEURS_ANNEAU_2 = new HashMap<>() {{
         put(CouleurResistance.NOIR, 0);
         put(CouleurResistance.MARRON, 1);
@@ -33,6 +42,9 @@ public class CouleursAnneaux {
         put(CouleurResistance.BLANC, 9);
     }};
 
+    /**
+     * The constant COULEURS_ANNEAU_3.
+     */
     public final static Map<CouleurResistance, Integer> COULEURS_ANNEAU_3 = new HashMap<>() {{
         put(CouleurResistance.NOIR, 0);
         put(CouleurResistance.MARRON, 1);
@@ -47,6 +59,9 @@ public class CouleursAnneaux {
         put(CouleurResistance.ABSENT, null);
     }};
 
+    /**
+     * The constant COULEURS_ANNEAU_MULTIPLICATEUR.
+     */
     public final static Map<CouleurResistance, Integer> COULEURS_ANNEAU_MULTIPLICATEUR = new HashMap<>() {{
         put(CouleurResistance.NOIR, 0);
         put(CouleurResistance.MARRON, 1);
@@ -62,6 +77,9 @@ public class CouleursAnneaux {
         put(CouleurResistance.ARGENT, -2);
     }};
 
+    /**
+     * The constant COULEURS_ANNEAU_TOLERANCE.
+     */
     public final static Map<CouleurResistance, Double> COULEURS_ANNEAU_TOLERANCE = new HashMap<>() {{
         put(CouleurResistance.NOIR, 20.0);
         put(CouleurResistance.MARRON, 1.0);
@@ -75,6 +93,9 @@ public class CouleursAnneaux {
         put(CouleurResistance.ABSENT, 20.0);
     }};
 
+    /**
+     * The constant COULEURS_ANNEAU_TEMPERATURE.
+     */
     public final static Map<CouleurResistance, Integer> COULEURS_ANNEAU_TEMPERATURE = new HashMap<>() {{
         put(CouleurResistance.NOIR, 200);
         put(CouleurResistance.MARRON, 100);

@@ -17,6 +17,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 
+/**
+ * The type Resistance preview controller.
+ */
 public class ResistancePreviewController {
 
     private Function<Anneau, Void> selectPrev;
@@ -26,6 +29,11 @@ public class ResistancePreviewController {
 
     private Map<Anneau, Rectangle> anneauxPreviewMap;
 
+    /**
+     * Initialize.
+     *
+     * @param selectPrev the select prev
+     */
     public void initialize(Function<Anneau, Void> selectPrev) {
         this.selectPrev = selectPrev;
         anneauxPreviewMap = new HashMap<>(){{
@@ -52,12 +60,23 @@ public class ResistancePreviewController {
         rectangle.getStrokeDashArray().addAll(0.5, 10.0);
     }
 
+    /**
+     * Update preview.
+     *
+     * @param anneau            the anneau
+     * @param couleurResistance the couleur resistance
+     */
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
         anneauxPreviewMap.get(anneau).setFill(couleurResistance == CouleurResistance.ABSENT ?
                 Color.TRANSPARENT :
                 Color.web(couleurResistance.getCouleurWeb()));
     }
-    
+
+    /**
+     * On click preview.
+     *
+     * @param source the source
+     */
     public void onClickPreview(Object source) {
         anneauxPreviewMap.forEach((anneau, rectangle) -> {
             if(Objects.equals(rectangle, source)) {
@@ -66,10 +85,20 @@ public class ResistancePreviewController {
         });
     }
 
+    /**
+     * Select rectangle.
+     *
+     * @param anneau the anneau
+     */
     public void selectRectangle(Anneau anneau) {
         anneauxPreviewMap.get(anneau).setStroke(Color.BLACK);
     }
 
+    /**
+     * Unselect rectangle.
+     *
+     * @param anneau the anneau
+     */
     public void unselectRectangle(Anneau anneau) {
         anneauxPreviewMap.get(anneau).setStroke(Color.TRANSPARENT);
     }

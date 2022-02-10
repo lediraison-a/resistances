@@ -3,8 +3,14 @@ package com.almath.resistancesihm.utils.Constantes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Superscript ascii.
+ */
 public class SuperscriptAscii {
 
+    /**
+     * The constant superscriptChars.
+     */
     public static final Map<Integer, String> superscriptChars = new HashMap<>() {{
         put(0, "\u2070");
         put(1, "\u00B9");

@@ -1,7 +1,19 @@
 package com.almath.resistancesihm.utils;
 
+/**
+ * The type Calcul resistance.
+ */
 public class CalculResistance {
 
+    /**
+     * Gets resistance.
+     *
+     * @param n1             the n 1
+     * @param n2             the n 2
+     * @param n3             the n 3
+     * @param multiplicateur the multiplicateur
+     * @return the resistance
+     */
     public static double getResistance (
             Integer n1,
             Integer n2,
