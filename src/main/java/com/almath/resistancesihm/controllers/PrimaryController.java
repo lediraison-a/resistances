@@ -38,78 +38,49 @@ import java.util.*;
  */
 public class PrimaryController implements Initializable {
 
-    /**
-     * The constant DARKSTYLE.
-     */
 // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
-    /**
-     * The constant PAGE_AIDE.
-     */
+
     private static String PAGE_AIDE;
 
     /**
      * The Valeur ohm.
+     * Used to get the current value in Ohm at anytime
      */
     private double valeurOhm;
-    /**
-     * The Resource bundle.
-     */
+
     private ResourceBundle resourceBundle;
-    /**
-     * The Languages.
-     */
+
     private Map<MenuItem, Locale> languages;
 
-    /**
-     * The Label calculer.
-     */
     @FXML
     private TextField labelCalculer;
-    /**
-     * The Combox convert.
-     */
+
     @FXML
     private ComboBox<String> comboxConvert;
-    /**
-     * The Root pane.
-     */
+
     @FXML
-    private Parent rootPane, /**
-     * The Color select.
-     */
-    colorSelect;
-    /**
-     * The Color select controller.
-     */
+    private Parent rootPane,
+            colorSelect;
+
     @FXML
     public ColorSelectController colorSelectController;
-    /**
-     * The Menu dark.
-     */
+
     @FXML
-    private MenuItem menuDark, /**
-     * The Menu light.
-     */
-    menuLight, /**
-     * The Menu lang fr.
-     */
-    menuLangFr, /**
-     * The Menu lang en.
-     */
-    menuLangEn;
+    private MenuItem menuDark,
+            menuLight,
+            menuLangFr,
+            menuLangEn;
 
     /**
      * Initialize.
+     * Initialize the Scene by setting the language, the theme,
+     * and the values of the resistor.
      *
      * @param url            the url
      * @param resourceBundle the resource bundle
      */
     @Override
-    /**
-     * Initialize the Scene by setting the language, the theme,
-     * and the values of the resistor.
-     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         languages = new HashMap<>() {{
             put(menuLangFr, Locale.FRENCH);
@@ -184,7 +155,7 @@ public class PrimaryController implements Initializable {
         String date = new SimpleDateFormat("ddMMyy-h:mm").format(Calendar.getInstance().getTime());
         String filename = colorSelectController.getNomResistance() + "-" + date + ".png";
         File imageFile = getFileChooser(filename).showSaveDialog(rootPane.getScene().getWindow());
-        if(imageFile != null) {
+        if (imageFile != null) {
             try {
                 WritableImage writableImage = currentScene.snapshot(null);
                 RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
@@ -269,7 +240,7 @@ public class PrimaryController implements Initializable {
      */
     private void setTheme(boolean isDark) {
         var darkStyle = Objects.requireNonNull(getClass().getResource(DARKSTYLE)).toExternalForm();
-        if(isDark) {
+        if (isDark) {
             rootPane.getStylesheets().add(darkStyle);
         } else {
             rootPane.getStylesheets().remove(darkStyle);
@@ -280,10 +251,11 @@ public class PrimaryController implements Initializable {
 
     /**
      * Sets lang menu.
+     * Sets the current language according the locale default
      */
     private void setLangMenu() {
         languages.forEach((menuItem, locale) -> {
-            if(Objects.equals(Locale.getDefault().getLanguage(), locale.getLanguage())) {
+            if (Objects.equals(Locale.getDefault().getLanguage(), locale.getLanguage())) {
                 menuItem.setDisable(true);
             }
         });
