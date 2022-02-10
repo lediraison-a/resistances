@@ -2,6 +2,9 @@ package com.almath.resistancesihm.models;
 
 /**
  * The enum Couleur resistance.
+ * This enum represent a color selectable for a ring.
+ * The enum contains also data associated with the color :
+ * abbreviation of the color, order of the color in the color list, the web color
  */
 public enum CouleurResistance {
     /**

@@ -4,8 +4,9 @@ import java.util.function.Function;
 
 /**
  * The type Combox line data.
+ * this class is used as a model for the Comboboxes. It represents a cell of a Combobox;
  *
- * @param <T> the type parameter
+ * @param <T> the type parameter, Integer or Double for the tolerance ring
  */
 public class ComboxLineData<T> {
     private CouleurResistance couleurResistance;
@@ -17,11 +18,11 @@ public class ComboxLineData<T> {
     /**
      * Instantiates a new Combox line data.
      *
-     * @param couleurResistance the couleur resistance
-     * @param anneau            the anneau
-     * @param dispValeurAssocie the disp valeur associe
-     * @param valeurAssocie     the valeur associe
-     * @param colorName         the color name
+     * @param couleurResistance the couleur resistance associated with this cell
+     * @param anneau            the anneau (ring) of this cell
+     * @param dispValeurAssocie a function used to display the associated value in a good format
+     * @param valeurAssocie     associated value of this cell (Double or Integer)
+     * @param colorName         the color name (used for localisation)
      */
     public ComboxLineData(
             CouleurResistance couleurResistance,
@@ -43,6 +44,7 @@ public class ComboxLineData<T> {
 
     /**
      * Disp valeur associe string.
+     * make a call to the dispValeurAssocie function
      *
      * @return the string
      */

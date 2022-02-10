@@ -5,11 +5,13 @@ import java.util.Map;
 
 /**
  * The type Superscript ascii.
+ * this class contains a static map that give a superscript ascii from an integer number.
+ * this is used to display power numbers.
  */
 public class SuperscriptAscii {
 
     /**
-     * The constant superscriptChars.
+     * The constant superscriptChars map.
      */
     public static final Map<Integer, String> superscriptChars = new HashMap<>() {{
         put(0, "\u2070");

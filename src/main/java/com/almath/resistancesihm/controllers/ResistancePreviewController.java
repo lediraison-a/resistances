@@ -19,6 +19,7 @@ import java.util.function.Function;
 
 /**
  * The type Resistance preview controller.
+ * this controller is used to manage the resistor preview
  */
 public class ResistancePreviewController {
 
@@ -27,12 +28,13 @@ public class ResistancePreviewController {
     @FXML
     private Rectangle r1, r2, r3, rMult, rToler, rTemp;
 
+    /* This map associate a Rectangle Object to a ring */
     private Map<Anneau, Rectangle> anneauxPreviewMap;
 
     /**
      * Initialize.
      *
-     * @param selectPrev the select prev
+     * @param selectPrev a function to call when the user click on a ring
      */
     public void initialize(Function<Anneau, Void> selectPrev) {
         this.selectPrev = selectPrev;
@@ -61,19 +63,20 @@ public class ResistancePreviewController {
     }
 
     /**
-     * Update preview.
+     * Update the preview.
      *
      * @param anneau            the anneau
      * @param couleurResistance the couleur resistance
      */
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
+        // get the correct rectangle associated with a ring and set a proper color
         anneauxPreviewMap.get(anneau).setFill(couleurResistance == CouleurResistance.ABSENT ?
                 Color.TRANSPARENT :
                 Color.web(couleurResistance.getCouleurWeb()));
     }
 
     /**
-     * On click preview.
+     * when the user click on ring, we call the selectPrev function with the correct ring as parameter
      *
      * @param source the source
      */
@@ -87,6 +90,7 @@ public class ResistancePreviewController {
 
     /**
      * Select rectangle.
+     * add a dashed stroke outline to the correct rectangle
      *
      * @param anneau the anneau
      */
@@ -96,6 +100,7 @@ public class ResistancePreviewController {
 
     /**
      * Unselect rectangle.
+     * remove the dashed stroke outline of the correct rectangle
      *
      * @param anneau the anneau
      */

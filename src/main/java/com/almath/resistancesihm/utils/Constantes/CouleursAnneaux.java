@@ -7,6 +7,8 @@ import java.util.Map;
 
 /**
  * The type Couleurs anneaux.
+ * this class contains all the values associated to a color.
+ * Each map contains all the possible values for a particular ring.
  */
 public class CouleursAnneaux {
 

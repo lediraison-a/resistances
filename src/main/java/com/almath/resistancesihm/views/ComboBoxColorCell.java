@@ -8,10 +8,12 @@ import javafx.scene.shape.Circle;
 
 /**
  * The type Combo box color cell.
+ * This class build the cell view of the combobox
+ * It call the functions of the Combobox Model (ComboxLineData)
+ * heavily inspired from http://www.java2s.com/Code/Java/JavaFX/customcellfactory.html
  *
- * @param <T> the type parameter
+ * @param <T> the type parameter, Integer or Double
  */
-// http://www.java2s.com/Code/Java/JavaFX/customcellfactory.html
 public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
     private static final int RAYON_CERCLE_PREVIEW = 6;
 

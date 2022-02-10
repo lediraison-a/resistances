@@ -2,6 +2,8 @@ package com.almath.resistancesihm.models;
 
 /**
  * The enum Anneau.
+ * This enum represent a ring of the resistor. There are 6 ring on the resistor
+ * this enum contains the default color for a ring.
  */
 public enum Anneau {
     /**
