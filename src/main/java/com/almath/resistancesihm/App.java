@@ -21,7 +21,7 @@ public class App extends Application {
     private static Scene scene;
 
     /**
-     * Start.
+     * Start the application.
      *
      * @param stage the stage
      * @throws IOException the io exception

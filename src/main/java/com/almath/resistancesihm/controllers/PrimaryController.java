@@ -10,16 +10,13 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.image.WritableImage;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -151,10 +148,12 @@ public class PrimaryController implements Initializable {
      * @param event the event
      */
     public void exportAsPng(ActionEvent event) {
+        // set the file
         Scene currentScene = rootPane.getScene();
         String date = new SimpleDateFormat("ddMMyy-h:mm").format(Calendar.getInstance().getTime());
         String filename = colorSelectController.getNomResistance() + "-" + date + ".png";
         File imageFile = getFileChooser(filename).showSaveDialog(rootPane.getScene().getWindow());
+        // Create the preview and export
         if (imageFile != null) {
             try {
                 WritableImage writableImage = currentScene.snapshot(null);
@@ -216,12 +215,14 @@ public class PrimaryController implements Initializable {
     /**
      * Change local.
      * Switch from a language to another by clicking on the language toolbar on the menu.
-     * Restart the app with the selected language
+     * set default language.
+     * Restart the app
      *
      * @param actionEvent the action event
      */
     public void changeLocal(ActionEvent actionEvent) {
         Locale.setDefault(languages.get((MenuItem) actionEvent.getSource()));
+        // restart app
         ((Stage) rootPane.getScene().getWindow()).close();
         Platform.runLater(() -> {
             try {
@@ -240,11 +241,13 @@ public class PrimaryController implements Initializable {
      */
     private void setTheme(boolean isDark) {
         var darkStyle = Objects.requireNonNull(getClass().getResource(DARKSTYLE)).toExternalForm();
+        // add or remove the dark stylesheet
         if (isDark) {
             rootPane.getStylesheets().add(darkStyle);
         } else {
             rootPane.getStylesheets().remove(darkStyle);
         }
+        // set the menu disable on the selected theme
         menuLight.setDisable(!isDark);
         menuDark.setDisable(isDark);
     }

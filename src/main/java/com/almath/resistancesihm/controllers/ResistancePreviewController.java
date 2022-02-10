@@ -29,25 +29,10 @@ public class ResistancePreviewController {
     private Function<Anneau, Void> selectPrev;
 
     /**
-     * The R 1.
+     * The Rectangles
      */
     @FXML
-    private Rectangle r1, /**
-     * The R 2.
-     */
-    r2, /**
-     * The R 3.
-     */
-    r3, /**
-     * The R mult.
-     */
-    rMult, /**
-     * The R toler.
-     */
-    rToler, /**
-     * The R temp.
-     */
-    rTemp;
+    private Rectangle r1, r2, r3, rMult, rToler, rTemp;
 
     /**
      * The Anneaux preview map.
