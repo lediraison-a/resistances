@@ -23,11 +23,35 @@ import java.util.function.Function;
  */
 public class ResistancePreviewController {
 
+    /**
+     * The Select prev.
+     */
     private Function<Anneau, Void> selectPrev;
 
+    /**
+     * The R 1.
+     */
     @FXML
-    private Rectangle r1, r2, r3, rMult, rToler, rTemp;
+    private Rectangle r1, /**
+     * The R 2.
+     */
+    r2, /**
+     * The R 3.
+     */
+    r3, /**
+     * The R mult.
+     */
+    rMult, /**
+     * The R toler.
+     */
+    rToler, /**
+     * The R temp.
+     */
+    rTemp;
 
+    /**
+     * The Anneaux preview map.
+     */
     /* This map associate a Rectangle Object to a ring */
     private Map<Anneau, Rectangle> anneauxPreviewMap;
 
@@ -53,6 +77,11 @@ public class ResistancePreviewController {
         });
     }
 
+    /**
+     * Sets rectangle.
+     *
+     * @param rectangle the rectangle
+     */
     private void setRectangle(Rectangle rectangle) {
         rectangle.setOnMouseClicked(mouseEvent ->
                 onClickPreview(mouseEvent.getSource()));

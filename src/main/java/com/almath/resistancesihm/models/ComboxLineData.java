@@ -9,10 +9,25 @@ import java.util.function.Function;
  * @param <T> the type parameter, Integer or Double for the tolerance ring
  */
 public class ComboxLineData<T> {
+    /**
+     * The Couleur resistance.
+     */
     private CouleurResistance couleurResistance;
+    /**
+     * The Anneau.
+     */
     private Anneau anneau;
+    /**
+     * The Disp valeur associe.
+     */
     private Function<T, String> dispValeurAssocie;
+    /**
+     * The Valeur associe.
+     */
     private T valeurAssocie;
+    /**
+     * The Color name.
+     */
     private String colorName;
 
     /**
@@ -37,6 +52,11 @@ public class ComboxLineData<T> {
         this.colorName = colorName;
     }
 
+    /**
+     * To string string.
+     *
+     * @return the string
+     */
     @Override
     public String toString() {
         return String.format("%s - %s", dispCouleur(), dispValeurAssocie());

@@ -35,32 +35,76 @@ import java.util.*;
 /**
  * The type Primary controller.
  * Main controller of the application
- *
  */
 public class PrimaryController implements Initializable {
 
-    // https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
+    /**
+     * The constant DARKSTYLE.
+     */
+// https://github.com/joffrey-bion/javafx-themes/blob/master/css/modena_dark.css
     private static final String DARKSTYLE = "/styles/Modena_dark.css";
+    /**
+     * The constant PAGE_AIDE.
+     */
     private static String PAGE_AIDE;
 
+    /**
+     * The Valeur ohm.
+     */
     private double valeurOhm;
+    /**
+     * The Resource bundle.
+     */
     private ResourceBundle resourceBundle;
+    /**
+     * The Languages.
+     */
     private Map<MenuItem, Locale> languages;
 
+    /**
+     * The Label calculer.
+     */
     @FXML
     private TextField labelCalculer;
+    /**
+     * The Combox convert.
+     */
     @FXML
     private ComboBox<String> comboxConvert;
+    /**
+     * The Root pane.
+     */
     @FXML
-    private Parent rootPane, colorSelect;
+    private Parent rootPane, /**
+     * The Color select.
+     */
+    colorSelect;
     /**
      * The Color select controller.
      */
     @FXML
     public ColorSelectController colorSelectController;
+    /**
+     * The Menu dark.
+     */
     @FXML
-    private MenuItem menuDark, menuLight, menuLangFr, menuLangEn;
+    private MenuItem menuDark, /**
+     * The Menu light.
+     */
+    menuLight, /**
+     * The Menu lang fr.
+     */
+    menuLangFr, /**
+     * The Menu lang en.
+     */
+    menuLangEn;
 
+    /**
+     * Initialize.
+     *
+     * @param url            the url
+     * @param resourceBundle the resource bundle
+     */
     @Override
     /**
      * Initialize the Scene by setting the language, the theme,
@@ -223,7 +267,6 @@ public class PrimaryController implements Initializable {
      *
      * @param isDark boolean value representing the current theme
      */
-
     private void setTheme(boolean isDark) {
         var darkStyle = Objects.requireNonNull(getClass().getResource(DARKSTYLE)).toExternalForm();
         if(isDark) {
@@ -235,6 +278,9 @@ public class PrimaryController implements Initializable {
         menuDark.setDisable(isDark);
     }
 
+    /**
+     * Sets lang menu.
+     */
     private void setLangMenu() {
         languages.forEach((menuItem, locale) -> {
             if(Objects.equals(Locale.getDefault().getLanguage(), locale.getLanguage())) {
@@ -245,7 +291,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Get file chooser.
-     *
+     * <p>
      * Initialize the file chooser.
      * Sets the default filename and directory
      *

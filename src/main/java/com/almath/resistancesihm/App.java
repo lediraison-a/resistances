@@ -15,8 +15,17 @@ import java.util.ResourceBundle;
  */
 public class App extends Application {
 
+    /**
+     * The constant scene.
+     */
     private static Scene scene;
 
+    /**
+     * Start.
+     *
+     * @param stage the stage
+     * @throws IOException the io exception
+     */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 800, 600);

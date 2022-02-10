@@ -31,8 +31,16 @@ public enum Anneau {
      */
     TEMP(CouleurResistance.ABSENT);
 
+    /**
+     * The Valeur depart.
+     */
     private CouleurResistance valeurDepart;
 
+    /**
+     * Instantiates a new Anneau.
+     *
+     * @param valeurDepart the valeur depart
+     */
     Anneau(CouleurResistance valeurDepart) {
         this.valeurDepart = valeurDepart;
     }

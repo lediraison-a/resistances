@@ -29,8 +29,19 @@ import java.util.function.Function;
  */
 public class ColorSelectController implements Initializable {
 
+    /**
+     * The type Anneau element.
+     *
+     * @param <T> the type parameter
+     */
     private static class AnneauElement<T> {
+        /**
+         * The Combo box.
+         */
         private ComboBox<ComboxLineData<T>> comboBox;
+        /**
+         * The Label.
+         */
         private Label label;
 
         /**
@@ -59,25 +70,76 @@ public class ColorSelectController implements Initializable {
         public Label getLabel() { return label; }
     }
 
+    /**
+     * The Resistance preview.
+     */
     @FXML
     private Parent resistancePreview;
+    /**
+     * The Resistance preview controller.
+     */
     @FXML
     private ResistancePreviewController resistancePreviewController;
 
+    /**
+     * The Combox first color.
+     */
     @FXML
     private ComboBox<ComboxLineData<Integer>>
             comboxFirstColor,
-            comboxSecondColor,
-            comboxThirdColor,
-            comboxMultiplier,
-            comboxTemp;
+    /**
+     * The Combox second color.
+     */
+    comboxSecondColor,
+    /**
+     * The Combox third color.
+     */
+    comboxThirdColor,
+    /**
+     * The Combox multiplier.
+     */
+    comboxMultiplier,
+    /**
+     * The Combox temp.
+     */
+    comboxTemp;
+    /**
+     * The Combox tolerance.
+     */
     @FXML
     private ComboBox<ComboxLineData<Double>> comboxTolerance;
+    /**
+     * The Lbl n 1.
+     */
     @FXML
-    private Label lblN1, lblN2, lblN3, lblMultiplicateur, lblTolerance, lblTemp;
+    private Label lblN1, /**
+     * The Lbl n 2.
+     */
+    lblN2, /**
+     * The Lbl n 3.
+     */
+    lblN3, /**
+     * The Lbl multiplicateur.
+     */
+    lblMultiplicateur, /**
+     * The Lbl tolerance.
+     */
+    lblTolerance, /**
+     * The Lbl temp.
+     */
+    lblTemp;
 
+    /**
+     * The Anneaux data.
+     */
     private Map<Anneau, AnneauElement> anneauxData;
 
+    /**
+     * On change combox.
+     *
+     * @param <T>   the type parameter
+     * @param event the event
+     */
     @FXML
     private <T> void onChangeCombox(ActionEvent event) {
         var combox = (ComboBox<ComboxLineData<T>>) event.getSource();
@@ -88,6 +150,12 @@ public class ColorSelectController implements Initializable {
         anneauxData.get(combox.getValue().getAnneau()).getLabel().setText(combox.getValue().dispValeurAssocie());
     }
 
+    /**
+     * Initialize.
+     *
+     * @param url            the url
+     * @param resourceBundle the resource bundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resistancePreviewController.initialize(anneau -> {
@@ -123,6 +191,18 @@ public class ColorSelectController implements Initializable {
         }};
     }
 
+    /**
+     * Initialiser comboxe combo box.
+     *
+     * @param <T>               the type parameter
+     * @param combox            the combox
+     * @param couleursAnneau    the couleurs anneau
+     * @param dispValeurAssocie the disp valeur associe
+     * @param anneau            the anneau
+     * @param label             the label
+     * @param resourceBundle    the resource bundle
+     * @return the combo box
+     */
     private <T> ComboBox<ComboxLineData<T>> initialiserComboxe(
             ComboBox<ComboxLineData<T>> combox,
             Map<CouleurResistance, T> couleursAnneau,
@@ -179,6 +259,13 @@ public class ColorSelectController implements Initializable {
                 getComboxAbrev(Anneau.TEMP);
     }
 
+    /**
+     * Gets combox abrev.
+     *
+     * @param <T>    the type parameter
+     * @param anneau the anneau
+     * @return the combox abrev
+     */
     private <T> String getComboxAbrev(Anneau anneau) {
         return ((ComboxLineData<T>) anneauxData.get(anneau).getComboBox().getValue()).getCouleurResistance().getAbrev();
     }

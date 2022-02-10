@@ -15,8 +15,14 @@ import javafx.scene.shape.Circle;
  * @param <T> the type parameter, Integer or Double
  */
 public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
+    /**
+     * The constant RAYON_CERCLE_PREVIEW.
+     */
     private static final int RAYON_CERCLE_PREVIEW = 6;
 
+    /**
+     * The Is combox btn.
+     */
     private boolean isComboxBtn;
 
     /**
@@ -28,6 +34,12 @@ public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
         this.isComboxBtn = isComboxBtn;
     }
 
+    /**
+     * Update item.
+     *
+     * @param item  the item
+     * @param empty the empty
+     */
     @Override
     protected void updateItem(ComboxLineData<T> item, boolean empty) {
         super.updateItem(item, empty);

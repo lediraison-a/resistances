@@ -60,9 +60,25 @@ public enum CouleurResistance {
      */
     ABSENT("", -1, "#ffffff");
 
-    private String abrev, couleurWeb;
+    /**
+     * The Abrev.
+     */
+    private String abrev, /**
+     * Couleur web couleur resistance.
+     */
+    couleurWeb;
+    /**
+     * The Ordre.
+     */
     private int ordre;
 
+    /**
+     * Instantiates a new Couleur resistance.
+     *
+     * @param abrev      the abrev
+     * @param ordre      the ordre
+     * @param couleurWeb the couleur web
+     */
     CouleurResistance(String abrev, int ordre, String couleurWeb) {
         this.abrev = abrev;
         this.ordre = ordre;
