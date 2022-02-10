@@ -1,6 +1,6 @@
-# Help page for the resistor calcuation application
+# Help page for the resistor calcuation application 📓⚡
 
-## Application's use
+## Application's use 🎛️
 The application is used to calculate the value of a resistor from its colors.
 By selecting the colors of each band, one can obtain the value of its resistance.
 
@@ -11,7 +11,7 @@ Some bands may have the color "absent", which corresponds to an absence of a ban
 Once the colors have been selected, click on the "compute" button and the display of the resistance value is modified.
 This value is by default in Ohm, but the unit can be changed using the drop-down menu.
 
-## Menus
+## Menus ⚙️
 ### The menu bar allows you to select different options:
 - First of all, the "File" tab allows you to quit the application, as well as export a screenshot in PNG format.
   The user can then choose the destination folder and the name of the saved file.
