@@ -26,21 +26,23 @@ import java.util.function.Function;
 
 /**
  * The type Color select controller.
+ * This controller manage the selection all things related to color selection.
  */
 public class ColorSelectController implements Initializable {
 
     /**
      * The type Anneau element.
+     * This class represent a ring
      *
      * @param <T> the type parameter
      */
     private static class AnneauElement<T> {
         /**
-         * The Combo box.
+         * The Combo box of the ring
          */
         private ComboBox<ComboxLineData<T>> comboBox;
         /**
-         * The Label.
+         * The Label of the ring.
          */
         private Label label;
 
@@ -71,7 +73,7 @@ public class ColorSelectController implements Initializable {
     }
 
     /**
-     * The Resistance preview.
+     * The Resistance preview Fxml element.
      */
     @FXML
     private Parent resistancePreview;
@@ -82,71 +84,45 @@ public class ColorSelectController implements Initializable {
     private ResistancePreviewController resistancePreviewController;
 
     /**
-     * The Combox first color.
+     * All comboboxes with an associated value of type Integer
      */
     @FXML
-    private ComboBox<ComboxLineData<Integer>>
-            comboxFirstColor,
+    private ComboBox<ComboxLineData<Integer>> comboxFirstColor, comboxSecondColor, comboxThirdColor, comboxMultiplier, comboxTemp;
+
     /**
-     * The Combox second color.
-     */
-    comboxSecondColor,
-    /**
-     * The Combox third color.
-     */
-    comboxThirdColor,
-    /**
-     * The Combox multiplier.
-     */
-    comboxMultiplier,
-    /**
-     * The Combox temp.
-     */
-    comboxTemp;
-    /**
-     * The Combox tolerance.
+     * The Combox tolerance, with an associated value of type Double.
      */
     @FXML
     private ComboBox<ComboxLineData<Double>> comboxTolerance;
+
     /**
-     * The Lbl n 1.
+     * The Labels displaying the values of the ring.
      */
     @FXML
-    private Label lblN1, /**
-     * The Lbl n 2.
-     */
-    lblN2, /**
-     * The Lbl n 3.
-     */
-    lblN3, /**
-     * The Lbl multiplicateur.
-     */
-    lblMultiplicateur, /**
-     * The Lbl tolerance.
-     */
-    lblTolerance, /**
-     * The Lbl temp.
-     */
-    lblTemp;
+    private Label lblN1, lblN2, lblN3, lblMultiplicateur, lblTolerance, lblTemp;
 
     /**
      * The Anneaux data.
+     * This map give a label and a combobox for a given ring
      */
     private Map<Anneau, AnneauElement> anneauxData;
 
     /**
      * On change combox.
+     * This function is called when a combobox change value
      *
      * @param <T>   the type parameter
      * @param event the event
      */
     @FXML
     private <T> void onChangeCombox(ActionEvent event) {
+        // get the good combobox
         var combox = (ComboBox<ComboxLineData<T>>) event.getSource();
-        System.out.println(combox.getValue().toString());
+        // updating the preview accordingly
         resistancePreviewController.updatePreview(
                 combox.getValue().getAnneau(),
                 combox.getValue().getCouleurResistance());
+        // Display the value in the label
         anneauxData.get(combox.getValue().getAnneau()).getLabel().setText(combox.getValue().dispValeurAssocie());
     }
 
@@ -158,11 +134,14 @@ public class ColorSelectController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Initialize the function to be called when the user click on a preview rectangle
         resistancePreviewController.initialize(anneau -> {
             anneauxData.get(anneau).getComboBox().show();
             return null;
         });
 
+        // Initialize the anneauData Map.
+        // Initialize each combobox with the good values.
         anneauxData = new HashMap<>(){{
             put(Anneau.N1, new AnneauElement(initialiserComboxe(comboxFirstColor,
                     CouleursAnneaux.COULEURS_ANNEAU_1,
@@ -193,14 +172,15 @@ public class ColorSelectController implements Initializable {
 
     /**
      * Initialiser comboxe combo box.
+     * This function initialize a combobox
      *
-     * @param <T>               the type parameter
-     * @param combox            the combox
-     * @param couleursAnneau    the couleurs anneau
-     * @param dispValeurAssocie the disp valeur associe
-     * @param anneau            the anneau
-     * @param label             the label
-     * @param resourceBundle    the resource bundle
+     * @param <T>               the type parameter (Integer or Double)
+     * @param combox            the combox, the combobox Object
+     * @param couleursAnneau    the couleurs anneau, the colors available for this ring
+     * @param dispValeurAssocie the disp valeur associe, the function to display the associated value in a good format
+     * @param anneau            the anneau, the ring of this combobox
+     * @param label             the label, the label to display the value
+     * @param resourceBundle    the resource bundle, the ressources (contain the color names)
      * @return the combo box
      */
     private <T> ComboBox<ComboxLineData<T>> initialiserComboxe(
@@ -212,6 +192,7 @@ public class ColorSelectController implements Initializable {
             ResourceBundle resourceBundle) {
         var combLines = combox.getItems();
         couleursAnneau.forEach((couleurResistance, valeurAssocie) -> {
+            // foreach color, add a nex ComboxLineData
             combLines.add(new ComboxLineData<T>(
                     couleurResistance,
                     anneau,
@@ -219,16 +200,23 @@ public class ColorSelectController implements Initializable {
                     valeurAssocie,
                     resourceBundle.getString("color." + couleurResistance.name().toLowerCase())));
         });
+        // sort the list by color order
         combLines.sort(Comparator.comparingInt(tComboxLineData ->
                 tComboxLineData.getCouleurResistance().getOrdre()));
+        // set the view for the combobox list cell and button cell
         combox.setCellFactory(comboxLineDataListView -> new ComboBoxColorCell<>(false));
         combox.setButtonCell(new ComboBoxColorCell<>(true));
+        // set the combobox items
         combox.setItems(combLines);
+        // set the combobox initial value
         combox.setValue(combLines.filtered(tComboxLineData ->
                 tComboxLineData.getCouleurResistance() == anneau.getValeurDepart()).get(0));
+        // set onHiding and onShowing to call rectangle selection
         combox.setOnHiding(event -> resistancePreviewController.unselectRectangle(anneau));
         combox.setOnShowing(event -> resistancePreviewController.selectRectangle(anneau));
+        // set the label text to initial value
         label.setText(combox.getValue().dispValeurAssocie());
+        // set the preview to the initial color
         resistancePreviewController.updatePreview(anneau, combox.getValue().getCouleurResistance());
         return combox;
     }
@@ -246,6 +234,7 @@ public class ColorSelectController implements Initializable {
 
     /**
      * Gets nom resistance.
+     * Append all abreviation of the selected colors
      *
      * @param <T> the type parameter
      * @return the nom resistance
@@ -261,6 +250,7 @@ public class ColorSelectController implements Initializable {
 
     /**
      * Gets combox abrev.
+     * get the abreviation for a given ring.
      *
      * @param <T>    the type parameter
      * @param anneau the anneau

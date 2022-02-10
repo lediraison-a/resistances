@@ -7,27 +7,27 @@ package com.almath.resistancesihm.models;
  */
 public enum Anneau {
     /**
-     * N 1 anneau.
+     * N 1 anneau. The first significant number
      */
     N1(CouleurResistance.MARRON),
     /**
-     * N 2 anneau.
+     * N 2 anneau. The second significant number
      */
     N2(CouleurResistance.VERT),
     /**
-     * N 3 anneau.
+     * N 3 anneau. The third significant number
      */
     N3(CouleurResistance.ROUGE),
     /**
-     * Mult anneau.
+     * Mult anneau. The multiplier
      */
     MULT(CouleurResistance.OR),
     /**
-     * Toler anneau.
+     * Toler anneau. The tolerance
      */
     TOLER(CouleurResistance.ABSENT),
     /**
-     * Temp anneau.
+     * Temp anneau. the temperature
      */
     TEMP(CouleurResistance.ABSENT);
 
@@ -48,7 +48,7 @@ public enum Anneau {
     /**
      * Gets valeur depart.
      *
-     * @return the valeur depart
+     * @return the valeur depart, the default value of the ring.
      */
     public CouleurResistance getValeurDepart() {
         return valeurDepart;
