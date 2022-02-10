@@ -34,6 +34,8 @@ import java.util.*;
 
 /**
  * The type Primary controller.
+ * Main controller of the application
+ *
  */
 public class PrimaryController implements Initializable {
 
@@ -60,6 +62,10 @@ public class PrimaryController implements Initializable {
     private MenuItem menuDark, menuLight, menuLangFr, menuLangEn;
 
     @Override
+    /**
+     * Initialize the Scene by setting the language, the theme,
+     * and the values of the resistor.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         languages = new HashMap<>() {{
             put(menuLangFr, Locale.FRENCH);
@@ -78,6 +84,8 @@ public class PrimaryController implements Initializable {
 
     /**
      * Run calculer.
+     * Called when clicking on the "compute" button.
+     * Sets the text of the result field to the calculated value of the resistor.
      *
      * @param event the event
      */
@@ -87,11 +95,6 @@ public class PrimaryController implements Initializable {
         var n3 = colorSelectController.<Integer>getComboxValue(Anneau.N3);
         var multiplier = colorSelectController.<Integer>getComboxValue(Anneau.MULT);
         var resistance = CalculResistance.getResistance(n1, n2, n3, multiplier);
-        // var tolerance = colorSelectController.<Double>getComboxValue(Anneau.TOLER);
-        // var temp = colorSelectController.<Integer>getComboxValue(Anneau.TEMP);
-
-        // System.out.printf("\n resistance : %f", resistance);
-        // System.out.printf("\n tolerance : %f", tolerance);
 
         comboxConvert.getSelectionModel().select(3);
         labelCalculer.setText(String.format("%.2f", resistance));
@@ -99,7 +102,7 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Switch theme mode.
+     * Switch theme mode between light and dark.
      *
      * @param event the event
      */
@@ -110,6 +113,8 @@ public class PrimaryController implements Initializable {
 
     /**
      * On change combox convertion.
+     * Called when choosing a value from the convertor combobox
+     * Display the value in the chosen unit
      *
      * @param actionEvent the action event
      */
@@ -123,6 +128,10 @@ public class PrimaryController implements Initializable {
 
     /**
      * Export as png.
+     * Called when selecting "export as png" in "File" in the menu bar.
+     * Saves a screenshot of the current state of the application.
+     * Opens a file chooser to select the name of the saved file and its location.
+     * Default value for the filename is the current date and the abbreviation of the color used.
      *
      * @param event the event
      */
@@ -143,21 +152,24 @@ public class PrimaryController implements Initializable {
     }
 
     /**
-     * Quitter app.
+     * Close app.
+     * Close the app
+     * Called when selecting "Exit" in the menu bar
      *
      * @param actionEvent the action event
      */
-    public void quitterApp(ActionEvent actionEvent) {
+    public void closeApp(ActionEvent actionEvent) {
         System.exit(0);
     }
 
     /**
-     * Visiter aide.
+     * Open help page.
+     * Opens a help page describing how to use the app.
      *
      * @param actionEvent the action event
      * @throws IOException the io exception
      */
-    public void visiterAide(ActionEvent actionEvent) throws IOException {
+    public void openHelpPage(ActionEvent actionEvent) throws IOException {
 //
 //        Stage popupwindow=new Stage();
 //
@@ -188,6 +200,8 @@ public class PrimaryController implements Initializable {
 
     /**
      * Change local.
+     * Switch from a language to another by clicking on the language toolbar on the menu.
+     * Restart the app with the selected language
      *
      * @param actionEvent the action event
      */
@@ -202,6 +216,13 @@ public class PrimaryController implements Initializable {
             }
         });
     }
+
+    /**
+     * Set theme.
+     * Set the current between light and dark
+     *
+     * @param isDark boolean value representing the current theme
+     */
 
     private void setTheme(boolean isDark) {
         var darkStyle = Objects.requireNonNull(getClass().getResource(DARKSTYLE)).toExternalForm();
@@ -222,6 +243,15 @@ public class PrimaryController implements Initializable {
         });
     }
 
+    /**
+     * Get file chooser.
+     *
+     * Initialize the file chooser.
+     * Sets the default filename and directory
+     *
+     * @param filename the name of the file to be saved
+     * @return the file chooser being initialized
+     */
     private FileChooser getFileChooser(String filename) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(resourceBundle.getString("file_export.title"));

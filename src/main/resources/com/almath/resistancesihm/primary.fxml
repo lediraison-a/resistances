@@ -31,7 +31,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="%menubar.title_fichier">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#quitterApp" text="%menubar.menu_exit" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeApp" text="%menubar.menu_exit" />
                   <MenuItem mnemonicParsing="false" onAction="#exportAsPng" text="%menubar.menu_export" />
                </items>
             </Menu>
@@ -43,7 +43,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="%menubar.title_aide">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#visiterAide" text="%menubar.menu_helppage" />
+              <MenuItem mnemonicParsing="false" onAction="#openHelpPage" text="%menubar.menu_helppage" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="%menubar.title_language">

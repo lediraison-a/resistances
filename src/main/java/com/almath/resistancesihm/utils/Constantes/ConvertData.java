@@ -9,6 +9,8 @@ import java.util.Map;
 public class ConvertData {
     /**
      * The constant CONVERT_DATA.
+     * The class is used to convert a value in Ohm to another unit.
+     * The value associated is the power value to convert from Ohm.
      */
     public static final Map<String, Integer> CONVERT_DATA = new HashMap<>() {{
         put("Nanoohm nΩ", 9);
