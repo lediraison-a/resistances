@@ -49,7 +49,7 @@ public class ResistancePreviewController {
         rectangle.setStroke(Color.TRANSPARENT);
         rectangle.setStrokeWidth(2);
         rectangle.setStrokeType(StrokeType.OUTSIDE);
-        rectangle.getStrokeDashArray().addAll(0.5, 10.0);
+        rectangle.getStrokeDashArray().addAll(1.0, 8.0);
     }
 
     public void updatePreview(Anneau anneau, CouleurResistance couleurResistance) {
