@@ -9,26 +9,22 @@ import javafx.scene.shape.Circle;
 /**
  * The type Combo box color cell.
  * This class build the cell view of the combobox
- * It call the functions of the Combobox Model (ComboxLineData)
+ * It calls the functions of the Combobox Model (ComboxLineData)
  * heavily inspired from http://www.java2s.com/Code/Java/JavaFX/customcellfactory.html
  *
  * @param <T> the type parameter, Integer or Double
  */
 public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
-    /**
-     * The constant RAYON_CERCLE_PREVIEW.
-     */
+
     private static final int RAYON_CERCLE_PREVIEW = 6;
 
-    /**
-     * The Is combox btn.
-     */
     private boolean isComboxBtn;
 
     /**
      * Instantiates a new Combo box color cell.
      *
-     * @param isComboxBtn the is combox btn
+     * @param isComboxBtn boolean value
+     *                    true when it is the current combox displayed
      */
     public ComboBoxColorCell(boolean isComboxBtn) {
         this.isComboxBtn = isComboxBtn;
@@ -37,8 +33,8 @@ public  class ComboBoxColorCell<T> extends ListCell<ComboxLineData<T>> {
     /**
      * Update item.
      *
-     * @param item  the item
-     * @param empty the empty
+     * @param item  the item to be updated
+     * @param empty is the item empty or not
      */
     @Override
     protected void updateItem(ComboxLineData<T> item, boolean empty) {
