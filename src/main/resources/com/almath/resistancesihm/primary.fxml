@@ -41,17 +41,17 @@
                   <MenuItem fx:id="menuDark" mnemonicParsing="false" onAction="#switchThemeMode" text="%menubar.menu_darktheme" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="%menubar.title_aide">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#openHelpPage" text="%menubar.menu_helppage" />
-            </items>
-          </Menu>
             <Menu mnemonicParsing="false" text="%menubar.title_language">
                <items>
                   <MenuItem fx:id="menuLangFr" mnemonicParsing="false" onAction="#changeLocal" text="%menubar.menu_lang_fr" />
                   <MenuItem fx:id="menuLangEn" mnemonicParsing="false" onAction="#changeLocal" text="%menubar.menu_lang_en" />
                </items>
             </Menu>
+          <Menu mnemonicParsing="false" text="%menubar.title_aide">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#openHelpPage" text="%menubar.menu_helppage" />
+            </items>
+          </Menu>
         </menus>
       </MenuBar>
 
