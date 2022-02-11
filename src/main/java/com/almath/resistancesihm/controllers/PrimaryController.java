@@ -148,6 +148,8 @@ public class PrimaryController implements Initializable {
      * @param event the event
      */
     public void exportAsPng(ActionEvent event) {
+        // help from this website
+        // https://code.makery.ch/blog/javafx-2-snapshot-as-png-image/
         // set the file
         Scene currentScene = rootPane.getScene();
         String date = new SimpleDateFormat("ddMMyy-h:mm").format(Calendar.getInstance().getTime());
@@ -185,6 +187,9 @@ public class PrimaryController implements Initializable {
      */
     public void openHelpPage(ActionEvent actionEvent) throws IOException {
         try {
+            // open default browser
+            // help from stackoverflow
+            // https://stackoverflow.com/questions/5226212/how-to-open-the-default-webbrowser-using-java
             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 Desktop.getDesktop().browse(new URI(PAGE_AIDE));
             }
@@ -204,6 +209,8 @@ public class PrimaryController implements Initializable {
     public void changeLocal(ActionEvent actionEvent) {
         Locale.setDefault(languages.get((MenuItem) actionEvent.getSource()));
         // restart app
+        // help from stackoverflow
+        // https://stackoverflow.com/questions/34788026/how-to-restart-a-javafx-application-when-a-button-is-clicked
         ((Stage) rootPane.getScene().getWindow()).close();
         Platform.runLater(() -> {
             try {
@@ -255,6 +262,8 @@ public class PrimaryController implements Initializable {
      * @return the file chooser being initialized
      */
     private FileChooser getFileChooser(String filename) {
+        // help from stackoverflow
+        // https://stackoverflow.com/questions/52464608/javafx-filechooser-new-file
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(resourceBundle.getString("file_export.title"));
         fileChooser.setInitialFileName(filename);

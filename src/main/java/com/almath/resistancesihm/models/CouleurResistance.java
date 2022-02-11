@@ -5,6 +5,10 @@ package com.almath.resistancesihm.models;
  * This enum represent a color selectable for a ring.
  * The enum contains also data associated with the color :
  * abbreviation of the color, order of the color in the color list, the web color
+ *
+ * https://codepen.io/dannyfritz/pen/DLmeMP
+ * this codpen was used to get the html code of the colors. converted from hsla to hex
+ *
  */
 public enum CouleurResistance {
     /**

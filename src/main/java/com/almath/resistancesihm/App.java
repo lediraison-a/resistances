@@ -64,6 +64,8 @@ public class App extends Application {
      * @return the locale resource
      */
     public static ResourceBundle getLocaleResource() {
+        // help from stackoverflow
+        // https://stackoverflow.com/questions/41303795/javafx-changing-locale-in-whole-application
         try {
             return ResourceBundle.getBundle("locales.resistances", Locale.getDefault());
         } catch (NullPointerException e) {
