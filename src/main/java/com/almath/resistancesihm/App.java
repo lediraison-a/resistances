@@ -59,7 +59,7 @@ public class App extends Application {
     }
 
     /**
-     * Gets locale resource.
+     * Gets locale resource for default locale.
      *
      * @return the locale resource
      */
