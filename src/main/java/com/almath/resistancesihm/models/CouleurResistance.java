@@ -11,69 +11,35 @@ package com.almath.resistancesihm.models;
  *
  */
 public enum CouleurResistance {
-    /**
-     * Noir couleur resistance.
-     */
+
     NOIR("BK", 0, "#000000"),
-    /**
-     * Marron couleur resistance.
-     */
+
     MARRON("BN", 1, "#944a00"),
-    /**
-     * Rouge couleur resistance.
-     */
+
     ROUGE("RD", 2, "#ff0000"),
-    /**
-     * Orange couleur resistance.
-     */
+
     ORANGE("OG", 3, "#ff8000"),
-    /**
-     * Jaune couleur resistance.
-     */
+
     JAUNE("YE", 4, "#ffff00"),
-    /**
-     * Vert couleur resistance.
-     */
+
     VERT("GN", 5, "#00ff00"),
-    /**
-     * Bleu couleur resistance.
-     */
+
     BLEU("BU", 6, "#0000ff"),
-    /**
-     * Violet couleur resistance.
-     */
+
     VIOLET("VT", 7, "#9000ff"),
-    /**
-     * Gris couleur resistance.
-     */
+
     GRIS("GY", 8, "#808080"),
-    /**
-     * Blanc couleur resistance.
-     */
+
     BLANC("WH", 9, "#ffffff"),
-    /**
-     * Or couleur resistance.
-     */
+
     OR("GD", 11, "#d4af35"),
-    /**
-     * Argent couleur resistance.
-     */
+
     ARGENT("SR", 12, "#bfbfbf"),
-    /**
-     * Absent couleur resistance.
-     */
+
     ABSENT("", -1, "#ffffff");
 
-    /**
-     * The Abrev.
-     */
-    private String abrev, /**
-     * Couleur web couleur resistance.
-     */
-    couleurWeb;
-    /**
-     * The Ordre.
-     */
+
+    private String abrev, couleurWeb;
     private int ordre;
 
     /**

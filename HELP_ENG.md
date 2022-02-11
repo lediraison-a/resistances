@@ -20,9 +20,9 @@ This value is by default in Ohm, but the unit can be changed using the drop-down
 
 - It is also possible to change the language of the application.
   Two choices are possible: French or English.
-  Changing the language of the application causes the application to restart, resetting any data entered.
+  ⚠️ Changing the language of the application causes the application to restart, resetting any data entered.
 
 - Finally, a "Help" tab provides access to a help page, which you are currently reading.
 
 
-#### **Application created by Alban Le Diraison and Mathis Guillarmous - CIPA4 GL**
+#### **Application created by Alban Le Diraison and Mathis Guillarmou - CIPA4 GL**

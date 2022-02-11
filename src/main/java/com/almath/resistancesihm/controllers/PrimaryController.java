@@ -254,7 +254,7 @@ public class PrimaryController implements Initializable {
 
     /**
      * Get file chooser.
-     * <p>
+     *
      * Initialize the file chooser.
      * Sets the default filename and directory
      *

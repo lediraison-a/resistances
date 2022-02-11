@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
  */
 public class App extends Application {
 
-    /**
-     * The constant scene.
-     */
     private static Scene scene;
 
     /**
