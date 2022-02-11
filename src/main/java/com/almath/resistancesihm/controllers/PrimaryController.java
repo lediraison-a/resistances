@@ -184,25 +184,6 @@ public class PrimaryController implements Initializable {
      * @throws IOException the io exception
      */
     public void openHelpPage(ActionEvent actionEvent) throws IOException {
-//
-//        Stage popupwindow=new Stage();
-//
-//        popupwindow.initModality(Modality.WINDOW_MODAL);
-//        popupwindow.setTitle("This is a pop up window");
-//
-//        Label label1= new Label("Pop up window now displayed");
-//
-//        Button button1= new Button("Close this pop up window");
-//
-//
-//        VBox layout= new VBox(10);
-//
-//        // layout.getChildren().add(label1, button1);
-//        layout.setAlignment(Pos.CENTER);
-//        Scene scene1= new Scene(App.loadFXML("helpView"), 800, 600);
-//        popupwindow.setScene(scene1);
-//        popupwindow.setResizable(false);
-//        popupwindow.showAndWait();
         try {
             if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
                 Desktop.getDesktop().browse(new URI(PAGE_AIDE));
