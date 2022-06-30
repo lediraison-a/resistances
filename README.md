@@ -1,6 +1,3 @@
----
-lang: EN-us
----
 # Resistances
 
 This application is school project.
