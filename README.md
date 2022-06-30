@@ -1,19 +1,21 @@
+---
+lang: EN-us
+---
 # Resistances
 
-**Binôme** : 
-Alban Le Diraison
-Mathis Guillarmou
+This application is school project.
+It is an application to calculate a resistor value from the colors rings. It is written in java with the java-fx
+library.
 
-Cette application permet de calculer la valeur d'une résistance à partir de ses couleurs.
-Elle a été développée dans le cadre d'une évaluation scolaire pour la matière Interface Homme Machine
+## Screenshot
 
-## Information
+![Alt text](/screenshot/screenshot.png?raw=true)
 
-Jdk requis : JDK 15 ou supérieur
+## Build
 
-Url du dépôt git : [https://git.alediraison.com/firnen/resistances](https://git.alediraison.com/firnen/resistances)
+JDK equal or greater than 15
 
-## Aide
+## Contributors
 
-Une page d'aide est disponible en [français](https://git.alediraison.com/firnen/resistances/src/branch/master/HELP_FR.md) et en [anglais](https://git.alediraison.com/firnen/resistances/src/branch/master/HELP_ENG.md)
-en suivant les liens, ou dans ce dépôt dans les fichiers HELP_FR.md et HELP_ENG.md.
+- Alban Le Diraison
+- Mathis Guillarmou
